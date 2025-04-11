@@ -13,12 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        run: git fetch --prune --unshallow
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
+         # Schritt: Git-Historie aktualisieren, um alle Tags und Commits verfügbar zu machen
+      - name: Fetch full history
+        run: git fetch --prune --unshallow
 
       - name: Get the tag from git
         run: |
