@@ -20,7 +20,10 @@ jobs:
           php-version: '8.3'
 
       - name: Get the tag from git
-        run: echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+        run: |
+          TAG_NAME=$(git describe --tags --abbrev=0)
+          echo "Current tag is: $TAG_NAME"
+          echo "GIT_TAG=$TAG_NAME" >> $GITHUB_ENV
 
       - name: Create ZIP file
         run: |
