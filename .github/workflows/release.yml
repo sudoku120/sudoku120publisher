@@ -19,11 +19,13 @@ jobs:
         with:
           php-version: '8.3'
 
+      - name: Get the tag from git
+        run: echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
       - name: Create ZIP file
         run: |
-          # Extrahiere den Tag-Namen
-          TAG_NAME=$(echo ${GITHUB_REF} | sed 's/refs\/tags\///')
-          echo "Tag Name : ${TAG_NAME}"
+          # Verwendet die Umgebungsvariable GIT_TAG
+          echo "Using tag: $GIT_TAG"
 
           # Erstelle einen Ordner mit dem Tag-Namen
           mkdir -p dist/sudoku120publisher
@@ -36,11 +38,11 @@ jobs:
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
-          zip -r sudoku120publisher-${TAG_NAME}.zip sudoku120publisher -x .git\* .github\* README.md
+          zip -r sudoku120publisher-${GIT_TAG}.zip sudoku120publisher -x .git\* README.md
 
       - name: Upload ZIP as GitHub Release asset
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/sudoku120publisher-${TAG_NAME}.zip
+          files: dist/sudoku120publisher-${GIT_TAG}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
