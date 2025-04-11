@@ -13,12 +13,11 @@ jobs:
       contents: write  # Berechtigung zum Schreiben von Inhalten
       actions: write   # Berechtigung zum Erstellen von Aktionen und Releases
 
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-         # Schritt: Git-Historie aktualisieren, um alle Tags und Commits verfügbar zu machen
+      # Schritt: Git-Historie aktualisieren, um alle Tags und Commits verfügbar zu machen
       - name: Fetch full history
         run: git fetch --prune --unshallow
 
@@ -36,6 +35,7 @@ jobs:
           # Erstelle einen Ordner mit dem Tag-Namen
           mkdir -p dist/sudoku120publisher
 
+          # Kopiere Dateien (ausgeschlossen: dist, assets, .github)
           rsync -av --exclude='dist' --exclude='assets' --exclude='.github' ./ dist/sudoku120publisher/
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
@@ -54,5 +54,5 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: false
-       env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
