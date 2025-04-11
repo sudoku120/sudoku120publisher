@@ -1,0 +1,41 @@
+name: Create Release ZIP
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Create ZIP file
+        run: |
+          # Extrahiere den Tag-Namen
+          TAG_NAME=$(echo ${GITHUB_REF} | sed 's/refs\/tags\///')
+
+          # Erstelle einen Ordner mit dem Tag-Namen
+          mkdir -p dist/sudoku120publisher
+
+          # Kopiere alle Dateien in den Ordner
+          cp -R * dist/sudoku120publisher/
+
+          # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
+          cd dist
+          zip -r sudoku120publisher-${TAG_NAME}.zip sudoku120publisher -x .git\* .github\* README.md
+
+      - name: Upload ZIP as GitHub Release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/sudoku120publisher-${TAG_NAME}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
