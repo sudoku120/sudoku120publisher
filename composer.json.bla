@@ -1,0 +1,21 @@
+{
+  "name": "sudoku120publisher/plugin",
+  "description": "WordPress plugin with custom coding standards.",
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "phpcompatibility/phpcompatibility-wp": "^2.1"
+  },
+  "scripts": {
+    "phpcs": "phpcs -p"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "extra": {
+    "phpcodesniffer-config": {
+      "default_standard": "phpcs.xml.dist"
+    }
+  }
+}

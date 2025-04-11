@@ -1,0 +1,482 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sudoku120publisher\n"
+"POT-Creation-Date: 2025-04-09 19:14+0200\n"
+"PO-Revision-Date: 2025-04-09 19:15+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: lang\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: functions.php:37 inc/admin/sudoku120publisher-proxy-urls.php:83
+#: inc/admin/sudoku120publisher-sudoku-list.php:52
+#: inc/admin/sudoku120publisher-sudoku-list.php:324
+msgid "Please enter a valid URL."
+msgstr "Zadajte platnú adresu URL."
+
+#: inc/admin/admin-menus.php:29
+msgid "Sudoku120 Publisher"
+msgstr "Sudoku120 Publisher"
+
+#: inc/admin/admin-menus.php:30
+msgid "Sudoku120"
+msgstr "Sudoku120"
+
+#: inc/admin/admin-menus.php:41 inc/admin/admin-menus.php:42
+msgid "Settings"
+msgstr "Sudoku120 Nastavenia"
+
+#: inc/admin/admin-menus.php:51 inc/admin/admin-menus.php:52
+msgid "Sudoku120 Proxy"
+msgstr "Sudoku120 Proxy"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:34
+#: inc/admin/sudoku120publisher-proxy-urls.php:71
+#: inc/admin/sudoku120publisher-proxy-urls.php:116
+msgid "Nonce verification failed. Please try again."
+msgstr "Overenie nonce zlyhalo. Skúste to prosím znova."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:58
+msgid "Proxy entry deleted."
+msgstr "Položka proxy servera odstránená."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:60
+msgid "Cannot delete proxy linked to a Sudoku."
+msgstr "Nie je možné odstrániť proxy server prepojený so sudoku."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:64
+msgid "Invalid request. Please try again."
+msgstr "Neplatná požiadavka. Skúste to prosím znova."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:106
+msgid "Proxy entry updated."
+msgstr "Aktualizovaný záznam proxy servera."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:142
+msgid ""
+"Warning: cURL is not available on this server. IP address, User-Agent and "
+"Referer forwarding will not work. WordPress fallback will be used instead"
+msgstr ""
+"Varovanie: cURL nie je na tomto serveri k dispozícii. Presmerovanie IP "
+"adresy, User-Agent a Referer nebude fungovať. Namiesto toho sa použije "
+"náhradný systém WordPress"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:147
+msgid "Sudoku120 Proxy List"
+msgstr "Zoznam proxy serverov Sudoku120"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:152
+msgid "ID"
+msgstr "ID PROXY"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:153
+msgid "Local URL"
+msgstr "Miestna adresa URL"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:154
+msgid "Remote URL"
+msgstr "Vzdialená adresa URL"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:155
+msgid "Client IP"
+msgstr "IP adresa klienta"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:156
+msgid "User Agent"
+msgstr "Používateľský agent"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:157
+msgid "Referrer"
+msgstr "Odosielateľ"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:158
+msgid "Actions"
+msgstr "Akcie"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:172
+#: inc/admin/sudoku120publisher-proxy-urls.php:261
+#: inc/admin/sudoku120publisher-sudoku-list.php:198
+#: inc/admin/sudoku120publisher-sudoku-list.php:216
+msgid "Copy"
+msgstr "Akcie kopírovania"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:195
+#: inc/admin/sudoku120publisher-proxy-urls.php:196
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+msgid "Yes"
+msgstr "Áno"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:195
+#: inc/admin/sudoku120publisher-proxy-urls.php:196
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+msgid "No"
+msgstr "Nie"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:200
+msgid "Edit"
+msgstr "Upraviť"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:202
+msgid "Delete"
+msgstr "Odstrániť"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:208
+#, php-format
+msgid "Sudoku id=%s"
+msgstr "Sudoku id=%s"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:224
+msgid "Edit Proxy"
+msgstr "Upraviť proxy"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:228
+msgid "URL:"
+msgstr "URL:"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:229
+#: inc/admin/sudoku120publisher-proxy-urls.php:243
+msgid "Forward Client IP"
+msgstr "Presmerovanie IP adresy klienta"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:230
+#: inc/admin/sudoku120publisher-proxy-urls.php:244
+msgid "Forward User Agent"
+msgstr "Presmerovanie agenta používateľa"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:231
+#: inc/admin/sudoku120publisher-proxy-urls.php:245
+msgid "Forward Referrer"
+msgstr "Presmerovanie odkazovateľa"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:232
+#: inc/admin/sudoku120publisher-settings.php:165
+msgid "Save Changes"
+msgstr "Uložiť zmeny"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:234
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:239
+msgid "Add New Proxy"
+msgstr "Pridanie nového proxy servera"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:242
+msgid "Remote URL:"
+msgstr "Vzdialená adresa URL:"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:246
+msgid "Add Proxy"
+msgstr "Pridať proxy server"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:259
+msgid "Copied!"
+msgstr "Skopírované!"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:270
+msgid "Are you sure you want to delete this proxy?"
+msgstr "Ste si istí, že chcete odstrániť túto proxy?"
+
+#: inc/admin/sudoku120publisher-settings.php:101
+msgid "None"
+msgstr "Žiadne"
+
+#: inc/admin/sudoku120publisher-settings.php:111
+msgid "Sudoku120 Publisher Settings"
+msgstr "Sudoku120 Publisher Nastavenia"
+
+#: inc/admin/sudoku120publisher-settings.php:115
+msgid "Reverse Proxy Settings"
+msgstr "Nastavenia reverzného proxy servera"
+
+#: inc/admin/sudoku120publisher-settings.php:118
+msgid "Enable Reverse Proxy"
+msgstr "Povolenie reverzného proxy servera"
+
+#: inc/admin/sudoku120publisher-settings.php:120
+msgid "Enable or disable the proxy feature."
+msgstr "Povolenie alebo zakázanie funkcie proxy servera."
+
+#: inc/admin/sudoku120publisher-settings.php:122
+msgid "Sudoku Design Settings"
+msgstr "Nastavenia dizajnu sudoku"
+
+#: inc/admin/sudoku120publisher-settings.php:130
+msgid ""
+"Choose a CSS file for styling or select none. You can place your own design "
+"css in uploads/sudoku120publisher/designs/ and select it then here"
+msgstr ""
+"Vyberte súbor CSS na štylizáciu alebo nevyberajte žiadny. Vlastný dizajn css "
+"môžete umiestniť do súboru uploads/sudoku120publisher/designs/ a potom ho "
+"vybrať tu"
+
+#: inc/admin/sudoku120publisher-settings.php:132
+msgid "Sudoku Container Attributes"
+msgstr "Atribúty kontajnera Sudoku"
+
+#: inc/admin/sudoku120publisher-settings.php:142
+msgid "Custom Attributes"
+msgstr "Vlastné atribúty"
+
+#: inc/admin/sudoku120publisher-settings.php:149
+msgid ""
+"Extra Attributes for the div around the sudoku, set id, classes or direct a "
+"style.."
+msgstr ""
+"Ďalšie atribúty pre div okolo sudoku, nastavte id, triedy alebo priamo "
+"štýl..."
+
+#: inc/admin/sudoku120publisher-settings.php:153
+msgid "Outgoing Sudoku Link Settings"
+msgstr "Nastavenia odchádzajúceho odkazu sudoku"
+
+#: inc/admin/sudoku120publisher-settings.php:156
+msgid "rel=\"noopener noreferrer\""
+msgstr "rel=\"noopener noreferrer“"
+
+#: inc/admin/sudoku120publisher-settings.php:158
+msgid "rel=\"noopener noreferrer\" are security features for links"
+msgstr "rel=\"noopener noreferrer\" sú bezpečnostné prvky pre odkazy"
+
+#: inc/admin/sudoku120publisher-settings.php:161
+msgid "target=\"_blank\""
+msgstr "target=\"_blank“"
+
+#: inc/admin/sudoku120publisher-settings.php:163
+msgid ""
+"target=\"_blank\" will open the Link in a new browser tab or window when you "
+"click it."
+msgstr ""
+"target=\"_blank\" otvorí odkaz v novej karte alebo okne prehliadača, keď naň "
+"kliknete."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:40
+msgid ""
+"Please enter a valid API Key in UUID format (xxxxxxxx-xxxx-xxxx-xxxx-"
+"xxxxxxxxxxxx)."
+msgstr ""
+"Zadajte platný kľúč API vo formáte UUID (xxxxxxxx-xxxx-xxxx-xxxx-"
+"xxxxxxxxxxxx)."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:59
+msgid "Please provide either an API Key or a Proxy URL."
+msgstr "Zadajte buď kľúč API, alebo adresu URL proxy servera."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:68
+msgid "New Sudoku created successfully."
+msgstr "Nové sudoku bolo úspešne vytvorené."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:79
+#: inc/admin/sudoku120publisher-sudoku-list.php:94
+msgid "Invalid request, please try again."
+msgstr "Neplatná požiadavka, skúste to prosím znova."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:81
+#: inc/admin/sudoku120publisher-sudoku-list.php:96
+msgid "You do not have permission to perform this action."
+msgstr "Nemáte oprávnenie na vykonanie tejto akcie."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:84
+msgid "API data updated successfully."
+msgstr "Údaje API boli úspešne aktualizované."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:124
+msgid "Sudoku deleted successfully."
+msgstr "Sudoku úspešne odstránené."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:134
+msgid "Sudoku120 Publisher - Sudoku Management"
+msgstr "Sudoku120 Publisher - Správa sudoku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:145
+msgid "Approved"
+msgstr "Schválené"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:147
+msgid "Pending"
+msgstr "Čaká na vybavenie"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:149
+msgid "Rejected"
+msgstr "Zamietnuté"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:151
+msgid "Unknown"
+msgstr "Neznáme"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:156
+msgid "Sudokus"
+msgstr "Sudokus"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:169
+msgid "Active"
+msgstr "Aktívne"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:171
+msgid "Configuration"
+msgstr "Konfigurácia"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:173
+msgid "Inactive"
+msgstr "Neaktívna"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:175
+msgid "Problem"
+msgstr "Problém"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:194
+msgid "API URL:"
+msgstr "ADRESA URL API:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:202
+#, php-format
+msgid "Copy the API URL and enter it on %s"
+msgstr "Skopírujte adresu API a zadajte ju na %s"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:206
+msgid "Use now the shortcode in a page or post"
+msgstr "Použite teraz skratku na stránke alebo v príspevku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:213
+msgid "Sudoku URL:"
+msgstr "Sudoku URL:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:220
+#, php-format
+msgid "Copy the Sudoku URL and enter it on %s"
+msgstr "Skopírujte adresu URL sudoku a zadajte ju na %s"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:232
+msgid "Delete Sudoku"
+msgstr "Odstrániť Sudoku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
+msgid "Shortcode:"
+msgstr "Shortcode:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
+msgid "replace the x with the id of the Sudoku."
+msgstr "Nahraďte x id sudoku."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:240
+msgid "Add New Sudoku"
+msgstr "Pridať nové sudoku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:244
+#, php-format
+msgid "Login on %s and create a sudoku there"
+msgstr "Prihláste sa na %s a vytvorte tam sudoku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:247
+msgid ""
+"When the reverse proxy function is enabled you can enter the API Token to "
+"create the proxy url."
+msgstr ""
+"Keď je zapnutá funkcia reverzného proxy servera, môžete zadať token API na "
+"vytvorenie url adresy proxy servera."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:248
+msgid ""
+"Or create a reverse proxy in the webserver config and enter the url as Proxy "
+"URL."
+msgstr ""
+"Alebo vytvorte reverzný proxy server v konfigurácii webového servera a "
+"zadajte url ako Proxy URL."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:249
+msgid ""
+"Update the API Data after every setup step, to get the actual status here."
+msgstr ""
+"Po každom kroku nastavenia aktualizujte údaje API, aby ste tu získali "
+"aktuálny stav."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:255
+msgid "API Token"
+msgstr "Token API"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:262
+msgid "Proxy URL"
+msgstr "Adresa URL proxy servera"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:269
+msgid "Create Sudoku"
+msgstr "Vytvoriť sudoku"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:293
+msgid "Are you sure you want to delete this Sudoku?"
+msgstr "Ste si istí, že chcete odstrániť tento sudoku?"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:342
+msgid "Failed to create Sudoku entry."
+msgstr "Nepodarilo sa vytvoriť položku Sudoku."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:362
+msgid "No proxy found for the Sudoku."
+msgstr "Pre Sudoku nebol nájdený žiadny proxy server."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:417
+msgid "Invalid Sudoku ID or missing API URL."
+msgstr "Neplatné ID sudoku alebo chýbajúca adresa API URL."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:438
+#, php-format
+msgid "Failed to fetch Sudoku HTML (HTTP %d)."
+msgstr "Nepodarilo sa načítať Sudoku HTML (HTTP %d)."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:490
+msgid "API URL is missing or invalid."
+msgstr "Chýba alebo je neplatná adresa API URL."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:503
+msgid "Failed to parse API response."
+msgstr "Nepodarilo sa analyzovať odpoveď API."
+
+#: inc/class-sudoku120publisher-activate.php:141
+msgid "Error during plugin activation: "
+msgstr "Chyba počas aktivácie doplnku:"
+
+#: inc/class-sudoku120publisher-activate.php:192
+msgid "Error when manually triggering the process: "
+msgstr "Chyba pri ručnom spustení procesu:"
+
+#: inc/reverse-proxy.php:32
+msgid "Proxy is disabled."
+msgstr "Proxy server je vypnutý."
+
+#: inc/reverse-proxy.php:51
+msgid "Invalid proxy UUID."
+msgstr "Neplatný UUID proxy servera."
+
+#: inc/reverse-proxy.php:120
+msgid "Failed to fetch remote content."
+msgstr "Nepodarilo sa načítať vzdialený obsah."
+
+#: inc/shortcode.php:37
+msgid "Error: Missing or invalid Sudoku ID."
+msgstr "Chyba: Chýba alebo je neplatné ID sudoku."
+
+#: inc/shortcode.php:51
+msgid "Error: Sudoku not found."
+msgstr "Chyba: Sudoku sa nenašlo."
+
+#: inc/shortcode.php:67
+#, php-format
+msgid "Error: This Sudoku can only be displayed on %s."
+msgstr "Chyba: Toto sudoku možno zobraziť len na %s."
+
+#: inc/shortcode.php:73
+msgid "Error: Only one Sudoku shortcode is allowed per page."
+msgstr "Chyba: Na jednej stránke je povolený len jeden skrátený kód Sudoku."
+
+#: sudoku120publisher.php:133
+msgid "Tutorial Video"
+msgstr "Výukové video"

@@ -1,0 +1,24 @@
+# WordPress Core
+/wp-content/plugins/your-plugin-name/node_modules/
+/wp-content/plugins/your-plugin-name/vendor/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Log files
+*.log
+
+# Build files (z.B. von Webpack, Gulp oder anderen Build-Prozessen)
+dist/
+build/
+*.bak
+
+# Composer files
+composer.phar

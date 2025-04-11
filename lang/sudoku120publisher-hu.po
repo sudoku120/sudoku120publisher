@@ -1,0 +1,482 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sudoku120publisher\n"
+"POT-Creation-Date: 2025-04-09 19:05+0200\n"
+"PO-Revision-Date: 2025-04-09 19:07+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: lang\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: functions.php:37 inc/admin/sudoku120publisher-proxy-urls.php:83
+#: inc/admin/sudoku120publisher-sudoku-list.php:52
+#: inc/admin/sudoku120publisher-sudoku-list.php:324
+msgid "Please enter a valid URL."
+msgstr "Kérjük, adjon meg egy érvényes URL-t."
+
+#: inc/admin/admin-menus.php:29
+msgid "Sudoku120 Publisher"
+msgstr "Sudoku120 Publisher"
+
+#: inc/admin/admin-menus.php:30
+msgid "Sudoku120"
+msgstr "Sudoku120"
+
+#: inc/admin/admin-menus.php:41 inc/admin/admin-menus.php:42
+msgid "Settings"
+msgstr "Sudoku120 Beállítások"
+
+#: inc/admin/admin-menus.php:51 inc/admin/admin-menus.php:52
+msgid "Sudoku120 Proxy"
+msgstr "Sudoku120 Proxy"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:34
+#: inc/admin/sudoku120publisher-proxy-urls.php:71
+#: inc/admin/sudoku120publisher-proxy-urls.php:116
+msgid "Nonce verification failed. Please try again."
+msgstr "A nonce ellenőrzése sikertelen. Kérjük, próbálja meg újra."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:58
+msgid "Proxy entry deleted."
+msgstr "Proxy bejegyzés törölve."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:60
+msgid "Cannot delete proxy linked to a Sudoku."
+msgstr "Nem lehet törölni a Sudokuhoz kapcsolódó proxyt."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:64
+msgid "Invalid request. Please try again."
+msgstr "Érvénytelen kérés. Kérjük, próbálja újra."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:106
+msgid "Proxy entry updated."
+msgstr "Proxy bejegyzés frissítve."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:142
+msgid ""
+"Warning: cURL is not available on this server. IP address, User-Agent and "
+"Referer forwarding will not work. WordPress fallback will be used instead"
+msgstr ""
+"Figyelmeztetés: a cURL nem elérhető ezen a szerveren. Az IP-cím, a User-"
+"Agent és a Referer továbbítása nem fog működni. Helyette a WordPress "
+"fallback lesz használva"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:147
+msgid "Sudoku120 Proxy List"
+msgstr "Sudoku120 Proxy lista"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:152
+msgid "ID"
+msgstr "PROXY ID"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:153
+msgid "Local URL"
+msgstr "Helyi URL"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:154
+msgid "Remote URL"
+msgstr "Távoli URL"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:155
+msgid "Client IP"
+msgstr "Ügyfél IP"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:156
+msgid "User Agent"
+msgstr "Felhasználó ügynök"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:157
+msgid "Referrer"
+msgstr "Referrer"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:158
+msgid "Actions"
+msgstr "Műveletek"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:172
+#: inc/admin/sudoku120publisher-proxy-urls.php:261
+#: inc/admin/sudoku120publisher-sudoku-list.php:198
+#: inc/admin/sudoku120publisher-sudoku-list.php:216
+msgid "Copy"
+msgstr "Másolás"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:195
+#: inc/admin/sudoku120publisher-proxy-urls.php:196
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+msgid "Yes"
+msgstr "Igen"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:195
+#: inc/admin/sudoku120publisher-proxy-urls.php:196
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+msgid "No"
+msgstr "Nem"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:200
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:202
+msgid "Delete"
+msgstr "Törlés"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:208
+#, php-format
+msgid "Sudoku id=%s"
+msgstr "Sudoku id=%s"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:224
+msgid "Edit Proxy"
+msgstr "Proxy szerkesztése"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:228
+msgid "URL:"
+msgstr "URL:"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:229
+#: inc/admin/sudoku120publisher-proxy-urls.php:243
+msgid "Forward Client IP"
+msgstr "Ügyfél IP továbbítása"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:230
+#: inc/admin/sudoku120publisher-proxy-urls.php:244
+msgid "Forward User Agent"
+msgstr "Felhasználói ügynök továbbítása"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:231
+#: inc/admin/sudoku120publisher-proxy-urls.php:245
+msgid "Forward Referrer"
+msgstr "Referrer továbbítása"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:232
+#: inc/admin/sudoku120publisher-settings.php:165
+msgid "Save Changes"
+msgstr "Változások mentése"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:234
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:239
+msgid "Add New Proxy"
+msgstr "Új proxy hozzáadása"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:242
+msgid "Remote URL:"
+msgstr "Távoli URL:"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:246
+msgid "Add Proxy"
+msgstr "Proxy hozzáadása"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:259
+msgid "Copied!"
+msgstr "Másolva!"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:270
+msgid "Are you sure you want to delete this proxy?"
+msgstr "Biztos, hogy törölni szeretné ezt a proxyt?"
+
+#: inc/admin/sudoku120publisher-settings.php:101
+msgid "None"
+msgstr "Nincs"
+
+#: inc/admin/sudoku120publisher-settings.php:111
+msgid "Sudoku120 Publisher Settings"
+msgstr "Sudoku120 Publisher beállítások"
+
+#: inc/admin/sudoku120publisher-settings.php:115
+msgid "Reverse Proxy Settings"
+msgstr "Fordított proxy beállítások"
+
+#: inc/admin/sudoku120publisher-settings.php:118
+msgid "Enable Reverse Proxy"
+msgstr "Fordított proxy engedélyezése"
+
+#: inc/admin/sudoku120publisher-settings.php:120
+msgid "Enable or disable the proxy feature."
+msgstr "A proxy funkció engedélyezése vagy letiltása."
+
+#: inc/admin/sudoku120publisher-settings.php:122
+msgid "Sudoku Design Settings"
+msgstr "Sudoku Design beállítások"
+
+#: inc/admin/sudoku120publisher-settings.php:130
+msgid ""
+"Choose a CSS file for styling or select none. You can place your own design "
+"css in uploads/sudoku120publisher/designs/ and select it then here"
+msgstr ""
+"Válasszon egy CSS fájlt a formázáshoz, vagy válassza a nincset. A saját css-"
+"t elhelyezheti a uploads/sudoku120publisher/designs/ alatt, majd itt "
+"kiválaszthatja."
+
+#: inc/admin/sudoku120publisher-settings.php:132
+msgid "Sudoku Container Attributes"
+msgstr "Sudoku konténer attribútumok"
+
+#: inc/admin/sudoku120publisher-settings.php:142
+msgid "Custom Attributes"
+msgstr "Egyéni attribútumok"
+
+#: inc/admin/sudoku120publisher-settings.php:149
+msgid ""
+"Extra Attributes for the div around the sudoku, set id, classes or direct a "
+"style.."
+msgstr ""
+"Extra attribútumok a sudoku körüli div-hez, állítson be id-t, osztályokat "
+"vagy irányítson egy stílust..."
+
+#: inc/admin/sudoku120publisher-settings.php:153
+msgid "Outgoing Sudoku Link Settings"
+msgstr "Kimenő sudoku link beállításai"
+
+#: inc/admin/sudoku120publisher-settings.php:156
+msgid "rel=\"noopener noreferrer\""
+msgstr "rel=\"noopener noreferrer”"
+
+#: inc/admin/sudoku120publisher-settings.php:158
+msgid "rel=\"noopener noreferrer\" are security features for links"
+msgstr "A rel=\"noopener noreferrer\" a linkek biztonsági jellemzői"
+
+#: inc/admin/sudoku120publisher-settings.php:161
+msgid "target=\"_blank\""
+msgstr "target=\"_blank”"
+
+#: inc/admin/sudoku120publisher-settings.php:163
+msgid ""
+"target=\"_blank\" will open the Link in a new browser tab or window when you "
+"click it."
+msgstr ""
+"A target=\"_blank\" a linket egy új böngésző lapon vagy ablakban nyitja meg, "
+"amikor rákattint."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:40
+msgid ""
+"Please enter a valid API Key in UUID format (xxxxxxxx-xxxx-xxxx-xxxx-"
+"xxxxxxxxxxxx)."
+msgstr ""
+"Kérjük, adjon meg egy érvényes API-kulcsot UUID formátumban (xxxxxxxx-xxxxx-"
+"xxxxxx-xxxxxx-xxxxxxxxxxxxxxxxxxxx)."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:59
+msgid "Please provide either an API Key or a Proxy URL."
+msgstr "Kérjük, adjon meg egy API-kulcsot vagy egy proxy URL-t."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:68
+msgid "New Sudoku created successfully."
+msgstr "Új Sudoku sikeresen létrehozva."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:79
+#: inc/admin/sudoku120publisher-sudoku-list.php:94
+msgid "Invalid request, please try again."
+msgstr "Érvénytelen kérés, kérjük, próbálja meg újra."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:81
+#: inc/admin/sudoku120publisher-sudoku-list.php:96
+msgid "You do not have permission to perform this action."
+msgstr "Nincs jogosultsága a művelet végrehajtásához."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:84
+msgid "API data updated successfully."
+msgstr "Az API-adatok sikeresen frissültek."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:124
+msgid "Sudoku deleted successfully."
+msgstr "Sudoku sikeresen törölve."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:134
+msgid "Sudoku120 Publisher - Sudoku Management"
+msgstr "Sudoku120 Publisher - Sudoku kezelése"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:145
+msgid "Approved"
+msgstr "Jóváhagyott"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:147
+msgid "Pending"
+msgstr "Függőben"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:149
+msgid "Rejected"
+msgstr "Elutasítva"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:151
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:156
+msgid "Sudokus"
+msgstr "Sudokus"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:169
+msgid "Active"
+msgstr "Aktív"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:171
+msgid "Configuration"
+msgstr "Konfiguráció"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:173
+msgid "Inactive"
+msgstr "Inaktív"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:175
+msgid "Problem"
+msgstr "Probléma"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:194
+msgid "API URL:"
+msgstr "API URL:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:202
+#, php-format
+msgid "Copy the API URL and enter it on %s"
+msgstr "Másolja ki az API URL-címet, és adja meg a %s oldalon."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:206
+msgid "Use now the shortcode in a page or post"
+msgstr "A rövidkód használata egy oldalon vagy bejegyzésben"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:213
+msgid "Sudoku URL:"
+msgstr "Sudoku URL:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:220
+#, php-format
+msgid "Copy the Sudoku URL and enter it on %s"
+msgstr "Másolja a Sudoku URL-címet, és adja meg a %s oldalon."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:232
+msgid "Delete Sudoku"
+msgstr "Sudoku törlése"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
+msgid "Shortcode:"
+msgstr "Shortcode:"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
+msgid "replace the x with the id of the Sudoku."
+msgstr "Az x helyébe a Sudoku azonosítóját írja be."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:240
+msgid "Add New Sudoku"
+msgstr "Új Sudoku hozzáadása"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:244
+#, php-format
+msgid "Login on %s and create a sudoku there"
+msgstr "Jelentkezzen be a %s oldalon és hozzon létre egy sudokut."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:247
+msgid ""
+"When the reverse proxy function is enabled you can enter the API Token to "
+"create the proxy url."
+msgstr ""
+"Ha a fordított proxy funkció engedélyezve van, akkor a proxy url "
+"létrehozásához megadhatja az API Tokent."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:248
+msgid ""
+"Or create a reverse proxy in the webserver config and enter the url as Proxy "
+"URL."
+msgstr ""
+"Vagy hozzon létre egy fordított proxyt a webszerver konfigurációjában, és "
+"adja meg az url-t Proxy URL-ként."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:249
+msgid ""
+"Update the API Data after every setup step, to get the actual status here."
+msgstr ""
+"Minden beállítási lépés után frissítse az API adatokat, hogy az aktuális "
+"állapotot itt kapja meg."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:255
+msgid "API Token"
+msgstr "API-token"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:262
+msgid "Proxy URL"
+msgstr "Proxy URL"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:269
+msgid "Create Sudoku"
+msgstr "Sudoku létrehozása"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:293
+msgid "Are you sure you want to delete this Sudoku?"
+msgstr "Biztos, hogy törölni szeretné ezt a Sudokut?"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:342
+msgid "Failed to create Sudoku entry."
+msgstr "Nem sikerült létrehozni a Sudoku bejegyzést."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:362
+msgid "No proxy found for the Sudoku."
+msgstr "Nem találtunk proxy-t a Sudokuhoz."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:417
+msgid "Invalid Sudoku ID or missing API URL."
+msgstr "Érvénytelen Sudoku azonosító vagy hiányzó API URL."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:438
+#, php-format
+msgid "Failed to fetch Sudoku HTML (HTTP %d)."
+msgstr "Nem sikerült lekérni a Sudoku HTML-jét (HTTP %d)."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:490
+msgid "API URL is missing or invalid."
+msgstr "Az API URL hiányzik vagy érvénytelen."
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:503
+msgid "Failed to parse API response."
+msgstr "Az API-válasz elemzése nem sikerült."
+
+#: inc/class-sudoku120publisher-activate.php:141
+msgid "Error during plugin activation: "
+msgstr "Hiba a bővítmény aktiválása során:"
+
+#: inc/class-sudoku120publisher-activate.php:192
+msgid "Error when manually triggering the process: "
+msgstr "Hiba a folyamat kézi indításakor:"
+
+#: inc/reverse-proxy.php:32
+msgid "Proxy is disabled."
+msgstr "A proxy le van tiltva."
+
+#: inc/reverse-proxy.php:51
+msgid "Invalid proxy UUID."
+msgstr "Érvénytelen proxy UUID."
+
+#: inc/reverse-proxy.php:120
+msgid "Failed to fetch remote content."
+msgstr "Sikertelen távoli tartalom lekérése."
+
+#: inc/shortcode.php:37
+msgid "Error: Missing or invalid Sudoku ID."
+msgstr "Hiba: Hiányzó vagy érvénytelen sudoku azonosító."
+
+#: inc/shortcode.php:51
+msgid "Error: Sudoku not found."
+msgstr "Hiba: Sudoku nem található."
+
+#: inc/shortcode.php:67
+#, php-format
+msgid "Error: This Sudoku can only be displayed on %s."
+msgstr "Hiba: Ez a Sudoku csak %s-on jeleníthető meg."
+
+#: inc/shortcode.php:73
+msgid "Error: Only one Sudoku shortcode is allowed per page."
+msgstr "Hiba: Oldalonként csak egy Sudoku rövidkód engedélyezett."
+
+#: sudoku120publisher.php:133
+msgid "Tutorial Video"
+msgstr "Oktatóvideó"

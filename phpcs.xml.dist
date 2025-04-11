@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset name="Sudoku120Publisher Coding Standards">
+    <description>Coding standards for the Sudoku120Publisher WordPress plugin.</description>
+
+    <!-- WordPress Coding Standards verwenden -->
+    <rule ref="WordPress"/>
+
+    <!-- PHP-Kompatibilitätsprüfungen (PHP 7.2 bis 8.4) -->
+    <rule ref="PHPCompatibility">
+        <properties>
+            <property name="testVersion" value="7.2-8.4"/>
+        </properties>
+    </rule>
+
+    <!-- WordPress-spezifische PHP-Kompatibilitätsprüfungen (WordPress 5.8 bis 6.8) -->
+    <rule ref="PHPCompatibilityWP">
+        <properties>
+            <property name="testVersion" value="5.8-6.8"/>
+        </properties>
+    </rule>
+
+    <!-- Zusätzliche empfohlene Standards -->
+    <rule ref="WordPress-Docs"/>
+    <rule ref="WordPress-Extra"/>
+
+    <!-- Bestimmte Regeln für die Haupt-Plugin-Datei ausschließen -->
+    <rule ref="WordPress.Files.FileName">
+        <exclude-pattern>sudoku120publisher.php</exclude-pattern>
+    </rule>
+
+    <rule ref="Squiz.Commenting.FileComment">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
+
+    <!-- Zu prüfende Dateien und Verzeichnisse -->
+    <file>./</file>
+
+</ruleset>
