@@ -22,7 +22,7 @@ jobs:
         run: |
           # Extrahiere den Tag-Namen
           TAG_NAME=$(echo ${GITHUB_REF} | sed 's/refs\/tags\///')
-          echo "Tag Name: ${TAG_NAME}"
+          echo "Tag Name : ${TAG_NAME}"
 
           # Erstelle einen Ordner mit dem Tag-Namen
           mkdir -p dist/sudoku120publisher
