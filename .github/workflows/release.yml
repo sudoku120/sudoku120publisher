@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Berechtigung zum Schreiben von Inhalten
+      actions: write   # Berechtigung zum Erstellen von Aktionen und Releases
+
 
     steps:
       - name: Checkout code
@@ -41,6 +45,9 @@ jobs:
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
           zip -r sudoku120publisher-${GIT_TAG}.zip sudoku120publisher -x .git\* README.md
+
+      - name: Debug - List dist directory
+        run: ls dist/
 
       - name: Upload ZIP as GitHub Release asset
         uses: softprops/action-gh-release@v1
