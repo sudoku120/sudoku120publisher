@@ -26,8 +26,11 @@ jobs:
           # Erstelle einen Ordner mit dem Tag-Namen
           mkdir -p dist/sudoku120publisher
 
-          # Kopiere alle Dateien in den Ordner
-          cp -R * dist/sudoku120publisher/
+          # Stelle sicher, dass die erweiterte Mustererweiterung aktiviert ist
+          shopt -s extglob
+
+          # Kopiere alle Dateien in den Ordner, außer den Verzeichnissen dist und assets
+          cp -R !(dist|assets) dist/sudoku120publisher/
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
