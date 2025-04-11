@@ -36,11 +36,7 @@ jobs:
           # Erstelle einen Ordner mit dem Tag-Namen
           mkdir -p dist/sudoku120publisher
 
-          # Stelle sicher, dass die erweiterte Mustererweiterung aktiviert ist
-          shopt -s extglob
-
-          # Kopiere alle Dateien in den Ordner, außer den Verzeichnissen dist und assets
-          cp -R !(dist|assets|.github) dist/sudoku120publisher/
+          rsync -av --exclude='dist' --exclude='assets' --exclude='.github' ./ dist/sudoku120publisher/
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
@@ -52,6 +48,11 @@ jobs:
       - name: Upload ZIP as GitHub Release asset
         uses: softprops/action-gh-release@v1
         with:
+          name: v${GIT_TAG}
+          tag_name: ${GIT_TAG}
           files: dist/sudoku120publisher-${GIT_TAG}.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
