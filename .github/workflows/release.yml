@@ -31,7 +31,7 @@ jobs:
           shopt -s extglob
 
           # Kopiere alle Dateien in den Ordner, außer den Verzeichnissen dist und assets
-          cp -R !(dist|assets) dist/sudoku120publisher/
+          cp -R !(dist|assets|.github) dist/sudoku120publisher/
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
