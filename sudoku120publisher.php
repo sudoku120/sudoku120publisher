@@ -3,7 +3,7 @@
 Plugin Name: Sudoku120 Publisher
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
 Description: Plugin to integrate the Sudoku120.com webmaster Sudoku in WordPress
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4

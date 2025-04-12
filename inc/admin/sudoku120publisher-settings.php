@@ -14,14 +14,90 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Register settings
  */
 function sudoku120publisher_register_settings() {
-	register_setting( 'sudoku120publisher_settings_group', SUDOKU120PUBLISHER_OPTION_PROXY_ACTIVE );
-	register_setting( 'sudoku120publisher_settings_group', SUDOKU120PUBLISHER_OPTION_DESIGN );
-	register_setting( 'sudoku120publisher_settings_group', SUDOKU120PUBLISHER_OPTION_LINK_REL );
-	register_setting( 'sudoku120publisher_settings_group', SUDOKU120PUBLISHER_OPTION_LINK_BLANK );
-	register_setting( 'sudoku120publisher_settings_group', SUDOKU120PUBLISHER_OPTION_SUDOKU_DIV_ATTR );
+	register_setting(
+		'sudoku120publisher_settings_group',
+		SUDOKU120PUBLISHER_OPTION_PROXY_ACTIVE,
+		'sudoku120publisher_sanitize_checkbox',
+	);
+
+	register_setting(
+		'sudoku120publisher_settings_group',
+		SUDOKU120PUBLISHER_OPTION_DESIGN,
+		'sudoku120publisher_sanitize_css_filename',
+	);
+
+	register_setting(
+		'sudoku120publisher_settings_group',
+		SUDOKU120PUBLISHER_OPTION_LINK_REL,
+		'sudoku120publisher_sanitize_checkbox',
+	);
+
+	register_setting(
+		'sudoku120publisher_settings_group',
+		SUDOKU120PUBLISHER_OPTION_LINK_BLANK,
+		'sudoku120publisher_sanitize_checkbox',
+	);
+
+	register_setting(
+		'sudoku120publisher_settings_group',
+		SUDOKU120PUBLISHER_OPTION_SUDOKU_DIV_ATTR,
+		'sudoku120publisher_sanitize_custom_attr',
+	);
 }
 add_action( 'admin_init', 'sudoku120publisher_register_settings' );
 
+
+/**
+ * Sanitize a checkbox value.
+ *
+ * Converts any truthy value to integer 1, and all others to 0.
+ * Useful as a sanitize_callback for checkbox fields in register_setting().
+ *
+ * @param mixed $value The submitted value from the checkbox field.
+ * @return int 1 if checked, 0 if unchecked or invalid.
+ */
+function sudoku120publisher_sanitize_checkbox( $value ) {
+	return $value ? 1 : 0;
+}
+
+/**
+ * Sanitize custom HTML attributes for a div element.
+ *
+ * @param string $input Raw input string containing HTML attributes.
+ * @return string Sanitized HTML string.
+ */
+function sudoku120publisher_sanitize_custom_attr( $input ) {
+	// Define allowed HTML tags and attributes.
+	$allowed_html = array(
+		'div' => array(
+			'id'     => true,      // Allow 'id' attribute.
+			'class'  => true,      // Allow 'class' attribute.
+			'style'  => true,      // Allow 'style' attribute.
+			'title'  => true,      // Allow 'title' attribute.
+			'data-*' => true,      // Allow custom 'data-*' attributes.
+		),
+	);
+
+	// Unsanitize and sanitize the input string.
+	return wp_kses( wp_unslash( $input ), $allowed_html );
+}
+
+/**
+ * Sanitize and validate the selected CSS design file.
+ *
+ * @param string $input Raw input value from the form.
+ * @return string Sanitized CSS filename or empty string if invalid.
+ */
+function sudoku120publisher_sanitize_css_filename( $input ) {
+	$filename = sanitize_file_name( wp_unslash( $input ) );
+
+	// Allow only .css files.
+	if ( preg_match( '/\.css$/', $filename ) ) {
+		return $filename;
+	}
+
+	return '';
+}
 
 /**
  * Display settings page

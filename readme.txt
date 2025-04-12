@@ -1,8 +1,8 @@
 === Sudoku120 Publisher ===
 Contributors: msdevcoder
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
-Description: Plugin to integrate the Sudoku120.com webmaster Sudoku in WordPress.
-Version: 1.0.0
+Version: 1.0.1
+Stable tag: 1.0.1
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -10,6 +10,8 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: sudoku120publisher
 Domain Path: /lang
+
+Easily embed Sudoku puzzles from Sudoku120.com into your WordPress site.
 
 == Description ==
 
@@ -176,3 +178,7 @@ Das umgebende `div`-Element sowie die Links befinden sich außerhalb des Shadow 
 
 = 1.0.0 =
 * Initial release of Sudoku120 Publisher plugin.
+
+= 1.0.1 =
+* Added additional sanitation functions to improve code quality and eliminate warnings in the plugin checker.
+* Updated `readme.txt` to meet WordPress Plugin Directory requirements and enhance the plugin description.

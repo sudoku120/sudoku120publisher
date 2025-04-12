@@ -36,7 +36,7 @@ jobs:
           mkdir -p dist/sudoku120publisher
 
           # Kopiere Dateien (ausgeschlossen: dist, assets, .github)
-          rsync -av --exclude='dist' --exclude='assets' --exclude='.github' ./ dist/sudoku120publisher/
+          rsync -av --exclude='dist' --exclude='assets' --exclude='.github' --exclude='phpcs.xml.dist' --exclude='composer.json' --exclude='README.md' --exclude='README_*.md' ./ dist/sudoku120publisher/
 
           # Erstelle das ZIP-Archiv mit dem Tag-Namen im Dateinamen
           cd dist
