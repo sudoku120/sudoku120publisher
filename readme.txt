@@ -1,4 +1,4 @@
-=== Sudoku120 Publisher ===
+=== Sudoku120publisher ===
 Contributors: msdevcoder
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
 Version: 1.0.1
