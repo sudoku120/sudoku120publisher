@@ -2,18 +2,6 @@
 
 # Sudoku120 Publisher
 
-**Mitwirkende:** msdevcoder  
-**Plugin-URI:** https://github.com/sudoku120/sudoku120publisher  
-**Beschreibung:** Plugin zur Integration des Webmaster-Sudokus von Sudoku120.com in WordPress.  
-**Version:** 1.0.0  
-**Benötigt mindestens:** 5.8  
-**Getestet bis:** 6.8  
-**Benötigt PHP:** 7.4  
-**Lizenz:** GPLv3 oder neuer  
-**Lizenz-URI:** https://www.gnu.org/licenses/gpl-3.0.html  
-**Textdomain:** sudoku120publisher  
-**Domain-Pfad:** /lang  
-
 ## Beschreibung
 
 Das Sudoku120 Publisher Plugin ermöglicht es, Sudokus von https://webmaster.sudoku120.com einfach in WordPress zu integrieren. Es übernimmt die folgenden Aufgaben:
