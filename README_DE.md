@@ -82,8 +82,3 @@ Das Aussehen des Sudokus kann über CSS-Variablen definiert werden. Acht Standar
 Das Sudoku selbst wird durch ein Shadow DOM vollständig von der restlichen Webseite abgekapselt, sodass sich dessen interne Styles nicht mit dem CSS der Webseite überschneiden.
 
 Das umgebende `div`-Element sowie die Links befinden sich außerhalb des Shadow DOM und können daher mit dem CSS der Webseite angepasst werden.
-
-## Changelog
-
-### 1.0.0
-- Erste Veröffentlichung des Sudoku120 Publisher Plugins.

@@ -1,7 +1,7 @@
 [🇩🇪 Deutsche Version](README_DE.md)
 
 # Sudoku120 Publisher
- 
+
 ## Description
 
 The Sudoku120 Publisher plugin allows you to easily integrate Sudokus from https://webmaster.sudoku120.com into WordPress. It performs the following tasks:
@@ -82,8 +82,3 @@ The appearance of the Sudoku can be customized using CSS variables. Eight defaul
 The Sudoku itself is encapsulated in a shadow DOM, ensuring that its internal styles do not interfere with the website’s CSS.
 
 The surrounding `div` element, as well as the links, are outside of the shadow DOM and can therefore be styled using the website’s main CSS.
-
-## Changelog
-
-### 1.0.0
-- Initial release of Sudoku120 Publisher plugin.
