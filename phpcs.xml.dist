@@ -23,6 +23,9 @@
     <rule ref="WordPress-Docs"/>
     <rule ref="WordPress-Extra"/>
 
+    <!-- Exclude one jsfile completely from checks -->
+    <exclude-pattern>./inc/admin/js/sudoku120publisher-delete-copy.js</exclude-pattern>
+
     <!-- Bestimmte Regeln für die Haupt-Plugin-Datei ausschließen -->
     <rule ref="WordPress.Files.FileName">
         <exclude-pattern>sudoku120publisher.php</exclude-pattern>

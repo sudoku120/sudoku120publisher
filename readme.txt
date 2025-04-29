@@ -1,8 +1,8 @@
-=== Sudoku120publisher ===
+=== Sudoku120 Publisher ===
 Contributors: msdevcoder
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
-Version: 1.0.1
-Stable tag: 1.0.1
+Version: 1.0.2
+Stable tag: 1.0.2
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -25,7 +25,7 @@ The Sudoku120 Publisher plugin allows you to easily integrate Sudokus from https
 
 Thanks to the reverse proxy, no requests are sent to external servers from the browser, and all connections are made locally. This ensures data protection-compliant usage without external data transfers.
 
-The reverse proxy can also be used for other purposes. However, no URLs are rewritten in the returned data. To allow the transmission of the user’s IP address, user agent, and referrer, cURL must be available on the server. While it is not recommended to forward the IP address, some services require it.
+The reverse proxy can also be used for other purposes. However, no URLs are rewritten in the returned data, and no cookies are forwarded in both directions. The admin can create custom reverse proxies and configure whether the user IP, user agent, and/or referer should be forwarded. While it is not recommended to forward the IP address, some services require it.
 
 There are various configuration options available for the Sudoku. The user can choose between pre-designed layouts or custom styling. Additionally, outgoing links can be enhanced with extra security features and opened in a new tab or window. The surrounding div element of the Sudoku can be customized with CSS classes, IDs, or direct style definitions.
 
@@ -46,7 +46,7 @@ Das Sudoku120 Publisher Plugin ermöglicht es, Sudokus von https://webmaster.sud
 
 Dank des Reverse-Proxys werden keine Anfragen vom Browser an fremde Server gesendet, sondern alle Verbindungen erfolgen lokal. Dies sorgt für eine datenschutzkonforme Nutzung ohne externe Datenübertragungen.
 
-Der Reverse-Proxy kann auch für andere Zwecke verwendet werden. Dabei werden jedoch keine URLs in den Rückgaben umgeschrieben. Um die Übertragung der User-IP-Adresse, des User-Agents und des Referrers zu ermöglichen, ist cURL auf dem Server erforderlich. Die Weitergabe der IP-Adresse wird zwar nicht empfohlen, aber es gibt auch Dienste, die dies benötigen.
+Der Reverse-Proxy kann auch für andere Zwecke verwendet werden. Dabei werden jedoch keine URLs in den Rückgaben umgeschrieben und es werden in beiden Richtungen keine Cookies übertragen. Der Admin kann beliebige Reverse-Proxys anlegen und dabei einstellen, ob die User-IP, der User-Agent und/oder der Referer weitergeleitet werden sollen. Die Weitergabe der IP-Adresse wird zwar nicht empfohlen, aber es gibt auch Dienste, die dies benötigen.
 
 Es stehen verschiedene Einstellungsmöglichkeiten für das Sudoku zur Verfügung. So kann der Benutzer zwischen verschiedenen vorgefertigten Designs oder einer eigenen Gestaltung wählen. Weiterhin können ausgehende Links mit zusätzlichen Sicherheitsmerkmalen versehen und in einem neuen Tab oder Browserfenster geöffnet werden. Das umgebende div-Element des Sudokus kann mit benutzerdefinierten CSS-Klassen, IDs oder direkten Style-Definitionen versehen werden.
 
@@ -167,12 +167,73 @@ The surrounding `div` element, as well as the links, are outside of the shadow D
 
 = Anpassbarkeit =
 
-Das Aussehen des Sudokus kann über CSS-Variablen definiert werden. Acht Standard-Designs werden unter `uploads/sudoku120publisher/designs/` installiert und sind in den Einstellungen auswählbar. Eigene Designs, die in diesem Verzeichnis abgelegt werden, sind ebenfalls in den Einstellungen auswählbar. Da es sich um CSS-Variablen handelt, können sie auch im normalen Seiten-CSS definiert werden, was eine Integration mit dem Light-/Dark-Design der Webseite oder anderen Anpassungen ermöglicht.
+Das Aussehen des Sudoku kann über CSS-Variablen definiert werden. Acht Standard-Designs werden unter `uploads/sudoku120publisher/designs/` installiert und sind in den Einstellungen auswählbar. Eigene Designs, die in diesem Verzeichnis abgelegt werden, sind ebenfalls in den Einstellungen auswählbar. Da es sich um CSS-Variablen handelt, können sie auch im normalen Seiten-CSS definiert werden, was eine Integration mit dem Light-/Dark-Design der Webseite oder anderen Anpassungen ermöglicht.
 
 Das Sudoku selbst wird durch ein Shadow DOM vollständig von der restlichen Webseite abgekapselt, sodass sich dessen interne Styles nicht mit dem CSS der Webseite überschneiden.
 
 Das umgebende `div`-Element sowie die Links befinden sich außerhalb des Shadow DOM und können daher mit dem CSS der Webseite angepasst werden.
 
+== External services ==
+
+This plugin requires a free account at https://webmaster.sudoku120.com
+
+When the plugin is activated, a folder named "sudoku120publisher" is created in the WordPress uploads directory. The following files are downloaded from https://webmaster.sudoku120.com and stored locally:
+- JavaScript file for the Sudoku
+- CSS file for the Sudoku
+- 8 example design CSS files (only setting CSS variables)
+
+These files are then served locally from the WordPress installation and are not loaded from the external server during normal operation.
+
+When creating a new Sudoku, the Sudoku HTML is fetched from https://webmaster.sudoku120.com and stored in the database. During this process, the paths to the JavaScript and CSS files are adjusted to point to the local copies.
+
+API calls are made when a Sudoku is loaded, a number is revealed, or when a Sudoku is validated. These API calls are routed through a reverse proxy on the domain of the WordPress installation.
+If the reverse proxy is automatically created during Sudoku configuration, only the HTTP referer is forwarded to the external service.
+If the reverse proxy is manually configured (e.g., directly in the web server settings), depending on the configuration, additional headers such as the user's IP address (via X-Forwarded-For) and the user agent string may also be transmitted.
+
+The data transmitted during these API calls includes:
+- Sudoku-related gameplay data
+- The domain (host) of the WordPress installation
+No other user-specific or personal data is included.
+
+webmaster.sudoku120.com does not evaluate or analyze the user IP address (via X-Forwarded-For), user agent, or referer data. However, user agent and referer information will be logged at the web server level.
+
+Unless the site administrator explicitly configures otherwise, no personal user data is transmitted to webmaster.sudoku120.com. Additionally, no direct browser requests are made to https://webmaster.sudoku120.com.
+
+With the default configuration, the plugin operates in a privacy-compliant manner and can be used without requiring explicit user consent.
+
+Privacy Policy: https://webmaster.sudoku120.com/privacy-policy
+Terms of Service: https://webmaster.sudoku120.com/terms-of-service
+
+== External services de ==
+
+Dieses Plugin erfordert ein kostenloses Konto auf https://webmaster.sudoku120.com
+
+Beim Aktivieren des Plugins wird im Uploads-Verzeichnis der WordPress-Installation ein Ordner namens "sudoku120publisher" erstellt. Die folgenden Dateien werden von https://webmaster.sudoku120.com heruntergeladen und lokal gespeichert:
+- JavaScript-Datei für das Sudoku
+- CSS-Datei für das Sudoku
+- 8 Beispiel-Design-CSS-Dateien (diese setzen nur CSS-Variablen)
+
+Diese Dateien werden anschließend lokal von der WordPress-Installation ausgeliefert und nicht während des normalen Betriebs vom externen Server geladen.
+
+Beim Anlegen eines neuen Sudokus wird das Sudoku-HTML von https://webmaster.sudoku120.com abgerufen und in der Datenbank gespeichert. Dabei werden die Pfade zu JavaScript- und CSS-Dateien auf die lokalen Kopien angepasst.
+
+API-Aufrufe erfolgen, wenn ein Sudoku geladen, eine Zahl aufgedeckt oder ein Sudoku überprüft wird. Diese API-Aufrufe werden über einen Reverse Proxy auf der Domain der WordPress-Installation weitergeleitet.
+Wird der Reverse Proxy automatisch während der Sudoku-Konfiguration erstellt, wird nur der HTTP-Referer an den externen Dienst weitergegeben.
+Wird der Reverse Proxy manuell konfiguriert (z. B. direkt in den Webserver-Einstellungen), können je nach Konfiguration zusätzlich der User-Agent und die IP-Adresse des Nutzers (über X-Forwarded-For) übertragen werden.
+
+Die bei diesen API-Aufrufen übermittelten Daten umfassen:
+- Sudoku-bezogene Spieldaten
+- Die Domain (Host) der WordPress-Installation
+Es werden keine weiteren nutzerspezifischen oder personenbezogenen Daten übermittelt.
+
+webmaster.sudoku120.com wertet weder die IP-Adresse des Nutzers (X-Forwarded-For), noch den User-Agent oder den Referer aus. User-Agent und Referer werden jedoch auf Webserver-Ebene protokolliert.
+
+Sofern der Administrator der Website keine anderslautende Konfiguration vornimmt, werden keine personenbezogenen Daten der Nutzer an webmaster.sudoku120.com übermittelt. Zudem erfolgen keine direkten Browseranfragen an https://webmaster.sudoku120.com.
+
+In der Standardkonfiguration arbeitet das Plugin datenschutzkonform und kann ohne ausdrückliche Zustimmung der Nutzer verwendet werden.
+
+Datenschutzerklärung: https://webmaster.sudoku120.com/de/datenschutzerklaerung
+Nutzungsbedingungen: https://webmaster.sudoku120.com/de/nutzungsbedingungen
 
 == Changelog ==
 
@@ -182,3 +243,8 @@ Das umgebende `div`-Element sowie die Links befinden sich außerhalb des Shadow 
 = 1.0.1 =
 * Added additional sanitation functions to improve code quality and eliminate warnings in the plugin checker.
 * Updated `readme.txt` to meet WordPress Plugin Directory requirements and enhance the plugin description.
+
+= 1.0.2 =
+* Removed usage of cURL to improve compatibility and security.
+* Added additional sanitization and escaping to meet WordPress Plugin Directory requirements.
+* Revised readme.txt and added detailed information about the external service integration.

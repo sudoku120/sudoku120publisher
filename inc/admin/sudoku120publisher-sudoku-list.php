@@ -18,6 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function sudoku120publisher_sudoku_list_page() {
 	global $wpdb;
 
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
 	// Load options.
 	$domain        = get_option( SUDOKU120PUBLISHER_OPTION_DOMAIN, '' );
 	$domain_status = get_option( SUDOKU120PUBLISHER_OPTION_DOMAIN_STATUS, '' );
@@ -132,7 +136,7 @@ function sudoku120publisher_sudoku_list_page() {
 	<div class="wrap">
 
 		<h1><?php esc_html_e( 'Sudoku120 Publisher - Sudoku Management', 'sudoku120publisher' ); ?></h1>
-<h2><?php echo esc_html( sudoku120publisher_idn_to_utf8_url( $domain ) ) . ' '; ?>
+<h2><?php echo esc_url( sudoku120publisher_idn_to_utf8_url( $domain ) ) . ' '; ?>
 <span style="color:
 	<?php
 	echo ( 'approved' === $domain_status ) ? 'green' :
@@ -192,10 +196,10 @@ function sudoku120publisher_sudoku_list_page() {
 				<?php echo esc_html( $sudoku->timezone ); ?></p>
 				<?php if ( ! empty( $sudoku->apiurl ) ) : ?>
 <p><?php esc_html_e( 'API URL:', 'sudoku120publisher' ); ?>
-<a href="<?php echo esc_url( $sudoku->apiurl ); ?>" target="_blank"> <?php echo esc_html( sudoku120publisher_idn_to_utf8_url( $sudoku->apiurl ) ); ?></a>
+<a href="<?php echo esc_url( $sudoku->apiurl ); ?>" target="_blank"> <?php echo esc_url( sudoku120publisher_idn_to_utf8_url( $sudoku->apiurl ) ); ?></a>
 					<?php if ( 'config' === $sudoku->status ) : ?>
 						<?php if ( empty( $sudoku->sudoku_content ) ) : ?>
-<button class="button copy-btn" data-clipboard-text="<?php echo esc_attr( $sudoku->apiurl ); ?>"><?php esc_html_e( 'Copy', 'sudoku120publisher' ); ?></button><br>
+<button class="button  sudoku120publisher-copy-btn" data-clipboard-text="<?php echo esc_url( $sudoku->apiurl ); ?>"><?php esc_html_e( 'Copy', 'sudoku120publisher' ); ?></button><br>
 <span>
 							<?php
 							/* translators: %s is a link to the webmaster sudoku website. */
@@ -211,9 +215,9 @@ function sudoku120publisher_sudoku_list_page() {
 
 				<?php if ( ! empty( $sudoku->sudokuurl ) ) : ?>
 <p><?php esc_html_e( 'Sudoku URL:', 'sudoku120publisher' ); ?>
-<a href="<?php echo esc_url( $sudoku->sudokuurl ); ?>" target="_blank"> <?php echo esc_html( sudoku120publisher_idn_to_utf8_url( $sudoku->sudokuurl ) ); ?></a>
+<a href="<?php echo esc_url( $sudoku->sudokuurl ); ?>" target="_blank"> <?php echo esc_url( sudoku120publisher_idn_to_utf8_url( $sudoku->sudokuurl ) ); ?></a>
 					<?php if ( 'config' === $sudoku->status && ! empty( $sudoku->sudoku_content ) ) : ?>
-<button class="button copy-btn" data-clipboard-text="<?php echo esc_attr( $sudoku->sudokuurl ); ?>"><?php esc_html_e( 'Copy', 'sudoku120publisher' ); ?></button><br>
+<button class="button  sudoku120publisher-copy-btn" data-clipboard-text="<?php echo esc_url( $sudoku->sudokuurl ); ?>"><?php esc_html_e( 'Copy', 'sudoku120publisher' ); ?></button><br>
 <span>
 						<?php
 						/* translators: %s is a link to the webmaster sudoku website. */
@@ -226,7 +230,7 @@ function sudoku120publisher_sudoku_list_page() {
 
 					<p>
 				<?php if ( ! empty( $_GET['page'] ) ) { ?>
-	<a href="?page=<?php	echo esc_html( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ); ?>&update=<?php echo esc_attr( $sudoku->id ); ?>&nonce=<?php echo esc_html( wp_create_nonce( 'update_sudoku_' . sanitize_text_field( wp_unslash( $sudoku->id ) ) ) ); ?>" class="button">Update API Data</a>
+	<a href="?page=<?php	echo esc_html( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ); ?>&update=<?php echo esc_attr( $sudoku->id ); ?>&nonce=<?php echo esc_html( wp_create_nonce( 'update_sudoku_' . sanitize_text_field( wp_unslash( $sudoku->id ) ) ) ); ?>" class="button"><?php esc_html_e( 'Update API Data', 'sudoku120publisher' ); ?></a>
 				<?php } ?>
 	<a href="#" class="button" style="background-color: red; color: white;" onclick="return sudoku120publisherconfirmDelete(<?php echo esc_attr( $sudoku->id ); ?>)">
 				<?php esc_html_e( 'Delete Sudoku', 'sudoku120publisher' ); ?>
@@ -272,38 +276,47 @@ function sudoku120publisher_sudoku_list_page() {
 	</div>
 
 	<?php
-	add_action(
-		'admin_footer',
-		function () {
-			?>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				if (typeof ClipboardJS !== 'undefined') {
-					new ClipboardJS('.copy-btn').on('success', function (e) {
-						e.trigger.textContent = 'Copied!';
-						setTimeout(() => {
-							e.trigger.textContent = 'Copy';
-						}, 2000);
-					});
-				}
-			});
-		</script>
-		<script>
-	function sudoku120publisherconfirmDelete(sudoku_id) {
-		if (confirm('<?php esc_html_e( 'Are you sure you want to delete this Sudoku?', 'sudoku120publisher' ); ?>')) {
-			let page = "<?php echo isset( $_GET['page'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) : ''; ?>";
-			let nonce = "<?php echo esc_attr( wp_create_nonce( 'delete_sudoku_' ) ); ?>";
-			window.location.href = "?page=" + page + "&delete=" + sudoku_id + "&nonce=" + nonce;
-		}
-		return false;
-	}
-	</script>
-
-			<?php
-		}
-	);
-	wp_enqueue_script( 'clipboard' );
 }
+
+/**
+ * Enqueues the admin-specific JavaScript files.
+ *
+ * This function checks if the current admin page is the plugin settings page,
+ * and if so, enqueues the necessary JavaScript files for the plugin.
+ *
+ * @param string $hook The current admin page hook.
+ *
+ * @return void
+ */
+function sudoku120publisher_enqueue_admin_scripts( $hook ) {
+
+	if ( 'toplevel_page_sudoku120publisher' !== $hook ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'sudoku120publisher-admin-js',
+		plugin_dir_url( __FILE__ ) . 'js/sudoku120publisher-delete-copy.js',
+		array( 'clipboard' ),
+		SUDOKU120PUBLISHER_VERSION,
+		true
+	);
+
+	wp_localize_script(
+		'sudoku120publisher-admin-js',
+		'sudoku120publisherL10n',
+		array(
+			'copy'           => esc_html__( 'Copy', 'sudoku120publisher' ),
+			'copied'         => esc_html__( 'Copied!', 'sudoku120publisher' ),
+			'confirm_delete' => esc_html__( 'Are you sure you want to delete this Sudoku?', 'sudoku120publisher' ),
+			'page'           => isset( $_GET['page'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) : '',
+			'nonce'          => esc_attr( wp_create_nonce( 'delete_sudoku_' ) ),
+		)
+	);
+}
+	add_action( 'admin_enqueue_scripts', 'sudoku120publisher_enqueue_admin_scripts' );
+
+
 
 
 /**
@@ -363,7 +376,7 @@ function sudoku120publisher_create_sudoku( $api_key = null, $proxy_url = null ) 
 			}
 
 			// generate local proxy url for the remote api.
-			$local_proxy_url = home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' );
+			$local_proxy_url = esc_url(home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' ));
 
 			// Update remote proxy url for the sudoku.
 			$wpdb->update(
@@ -417,7 +430,7 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 		return new WP_Error( 'missing_data', __( 'Invalid Sudoku ID or missing API URL.', 'sudoku120publisher' ) );
 	}
 
-	$sudoku_api_url = rtrim( $sudoku->apiurl, '/' ) . '/sudoku.txt';
+	$sudoku_api_url = esc_url_raw(rtrim( $sudoku->apiurl, '/' ) . '/sudoku.txt');
 
 	// Get Sudoku HTML from remote Api.
 	$response = wp_remote_get(
@@ -454,6 +467,43 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 		'src="' . esc_url( $local_js ) . '"',
 	);
 	$html    = str_replace( $search, $replace, $html );
+
+	$allowed_html = array(
+		'div'     => array('id' => true, 'class' => true, 'style' => true),
+		'span'    => array('id' => true, 'class' => true, 'style' => true),
+		'form'    => array('name' => true, 'method' => true, 'action' => true, 'id' => true, 'class' => true),
+		'select'  => array('name' => true, 'id' => true, 'class' => true),
+		'option'  => array('value' => true, 'selected' => true),
+		'input'   => array('type' => true, 'name' => true, 'value' => true, 'id' => true, 'class' => true, 'style' => true),
+		'button'  => array('type' => true, 'id' => true, 'class' => true, 'style' => true),
+		'link'    => array('href' => true, 'rel' => true, 'type' => true, 'media' => true),
+		'style'   => array('type' => true, 'media' => true),
+		'template'=> array('shadowrootmode' => true),
+		'img'     => array('src' => true, 'alt' => true, 'width' => true, 'height' => true, 'style' => true),
+		'a'       => array('href' => true, 'rel' => true, 'target' => true),
+		'h3'      => array(),
+		'p'       => array(),
+		'br'      => array(),
+		'script'  => array('type' => true, 'src' => true),
+	);
+
+
+	// The $html may contain JSON fragments with escaped closing tags (e.g., '<\/h3>', '<\/p>').
+	// WordPress's wp_kses() sanitization would strip these escaped tags, breaking the JSON structure.
+	// To prevent this, we temporarily replace the escaped closing tags with valid HTML tags
+	// before passing the content to wp_kses(). After sanitization, we re-escape the tags to restore
+	// the original JSON-compatible format.
+	$html = str_replace(
+			['<\/h3>', '<\/p>'],
+			['</h3>', '</p>'],
+			$html
+	);
+
+	$html = str_replace(
+		['</h3>', '</p>'],
+			['<\/h3>', '<\/p>'],
+			 wp_kses( $html , $allowed_html )
+		 );
 
 	// Save sudoku HTML into the db.
 	$wpdb->update(
@@ -505,19 +555,20 @@ function sudoku120publisher_update_sudoku_from_api( $sudoku_id ) {
 
 	// Prepare update data.
 	$update_data = array(
-		'name'     => $data['name'] ?? null,
-		'lang'     => $data['lang'] ?? null,
-		'timezone' => $data['timezone'] ?? null,
-		'status'   => $data['status'] ?? null,
+		'name'     => isset($data['name']) ? sanitize_text_field( $data['name'] ) : null,
+'lang'     => isset($data['lang']) ? sanitize_text_field( $data['lang'] ) : null,
+'timezone' => isset($data['timezone']) ? sanitize_text_field( $data['timezone'] ) : null,
+'status'   => isset($data['status']) ? sanitize_text_field( $data['status'] ) : null,
+
 	);
 
 	// Only update if the values are not empty.
-	if ( ! empty( $data['sudokuurl'] ) ) {
-		$update_data['sudokuurl'] = $data['sudokuurl'];
-	}
-	if ( ! empty( $data['apiurl'] ) ) {
-		$update_data['apiurl'] = $data['apiurl'];
-	}
+	if ( ! empty( $data['sudokuurl'] ) && wp_http_validate_url( $data['sudokuurl'] ) ) {
+    $update_data['sudokuurl'] = esc_url_raw( $data['sudokuurl'] );
+}
+if ( ! empty( $data['apiurl'] ) && wp_http_validate_url( $data['apiurl'] ) ) {
+    $update_data['apiurl'] = esc_url_raw( $data['apiurl'] );
+}
 
 	// Update database entries.
 	$wpdb->update(
@@ -534,12 +585,13 @@ function sudoku120publisher_update_sudoku_from_api( $sudoku_id ) {
 	}
 
 	// Update global domain options.
-	if ( isset( $data['domain'] ) ) {
-		update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN, $data['domain'] );
-	}
-	if ( isset( $data['domainstatus'] ) ) {
-		update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN_STATUS, $data['domainstatus'] );
-	}
+if ( isset( $data['domain'] ) ) {
+	update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN, sanitize_text_field( $data['domain'] ) );
+}
+if ( isset( $data['domainstatus'] ) ) {
+	update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN_STATUS, sanitize_text_field( $data['domainstatus'] ) );
+}
+
 
 	return true;
 }

@@ -23,6 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function sudoku120publisher_proxy_url_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
 	global $wpdb;
 	$table_name = SUDOKU120PUBLISHER_TABLE_PROXY;
 	// Handle Deletion.
@@ -136,13 +139,6 @@ function sudoku120publisher_proxy_url_page() {
 			echo '<div class="error"><p>' . esc_html( $error['message'] ) . '</p></div>';
 		}
 	} ?>
-	<?php if ( ! function_exists( 'curl_init' ) ) : ?>
-	<div class="notice notice-warning">
-		<p>
-			<?php esc_html_e( 'Warning: cURL is not available on this server. IP address, User-Agent and Referer forwarding will not work. WordPress fallback will be used instead', 'sudoku120publisher' ); ?>
-		</p>
-	</div>
-<?php endif; ?>
 <div class="wrap">
 	<h1><?php echo esc_html__( 'Sudoku120 Proxy List', 'sudoku120publisher' ); ?></h1>
 
@@ -160,6 +156,7 @@ function sudoku120publisher_proxy_url_page() {
 		</thead>
 		<tbody>
 			<?php
+			$editnounce = wp_create_nonce( 'edit_sudoku_nonce' );
 			foreach ( $proxies as $proxy ) :
 				// Generate the full local proxy URL.
 				$local_proxy_url = home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' );
@@ -168,7 +165,7 @@ function sudoku120publisher_proxy_url_page() {
 				<td><?php echo esc_html( $proxy->id ); ?></td>
 				<td><?php echo esc_html( $local_proxy_url ); ?><br>
 
-					<button class="button copy-btn" data-clipboard-text="<?php echo esc_url( sudoku120publisher_idn_to_ascii_url( $local_proxy_url ) ); ?>">
+					<button class="button sudoku120publisher-copy-btn" data-clipboard-text="<?php echo esc_url( sudoku120publisher_idn_to_ascii_url( $local_proxy_url ) ); ?>">
 				<?php echo esc_html__( 'Copy', 'sudoku120publisher' ); ?>
 </button>
 
@@ -197,8 +194,10 @@ function sudoku120publisher_proxy_url_page() {
 <td><?php echo $proxy->referrer ? esc_html__( 'Yes', 'sudoku120publisher' ) : esc_html__( 'No', 'sudoku120publisher' ) . ' &#10004;'; ?></td>
 <td>
 				<?php if ( is_null( $proxy->sudoku_id ) ) : ?>
-		<a href="?page=sudoku120publisher_proxy&edit=<?php echo esc_html( $proxy->id ); ?>"><?php echo esc_html__( 'Edit', 'sudoku120publisher' ); ?></a> |
-		<a href="#" onclick="return sudoku120publisherConfirmDelete(<?php echo esc_html( $proxy->id ); ?>);">
+					<a href="<?php echo esc_url( '?page=sudoku120publisher_proxy&edit=' . $proxy->id . '&editnonce=' . $editnounce ); ?>">
+					<?php echo esc_html__( 'Edit', 'sudoku120publisher' ); ?>
+				</a>
+<a href="#" onclick="return sudoku120publisherconfirmDelete(<?php echo esc_html( $proxy->id ); ?>);">
 					<?php echo esc_html__( 'Delete', 'sudoku120publisher' ); ?>
 		</a>
 	<?php else : ?>
@@ -216,7 +215,7 @@ function sudoku120publisher_proxy_url_page() {
 </table>
 
 	<?php
-	if ( isset( $_GET['edit'] ) ) :
+	if ( isset( $_GET['edit'] ) && isset( $_GET['editnonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['editnonce'] ) ), 'edit_sudoku_nonce' ) ) :
 		$edit_id = intval( $_GET['edit'] );
 		$proxy   = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . esc_sql( $table_name ) . ' WHERE id = %d', $edit_id ) );
 		if ( $proxy ) :
@@ -248,33 +247,43 @@ function sudoku120publisher_proxy_url_page() {
 </div>
 
 	<?php
-	add_action(
-		'admin_footer',
-		function () {
-			?>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			if (typeof ClipboardJS !== 'undefined') {
-				new ClipboardJS('.copy-btn').on('success', function (e) {
-					e.trigger.textContent = '<?php esc_html_e( 'Copied!', 'sudoku120publisher' ); ?>';
-					setTimeout(() => {
-						e.trigger.textContent = '<?php esc_html_e( 'Copy', 'sudoku120publisher' ); ?>';
-					}, 2000);
-				});
-			}
-		});
-	</script>
-	</script>
-	<script>
-	function sudoku120publisherConfirmDelete(proxy_id) {
-		if (confirm("<?php echo esc_js( __( 'Are you sure you want to delete this proxy?', 'sudoku120publisher' ) ); ?>")) {
-		window.location.href = "<?php echo esc_url_raw( admin_url( 'admin.php?page=sudoku120publisher_proxy&delete=' ) ); ?>" + proxy_id + "&nonce=<?php echo esc_js( wp_create_nonce( 'sudoku120publisher_delete_proxy' ) ); ?>";
-		}
-		return false;
-	}
-</script>
-			<?php
-		}
-	);
-	wp_enqueue_script( 'clipboard' );
 }
+
+
+/**
+ * Enqueues the admin-specific JavaScript files.
+ *
+ * This function checks if the current admin page is the plugin settings page,
+ * and if so, enqueues the necessary JavaScript files for the plugin.
+ *
+ * @param string $hook The current admin page hook.
+ *
+ * @return void
+ */
+function sudoku120publisher_enqueue_admin_scripts( $hook ) {
+
+	if ( 'toplevel_page_sudoku120publisher_proxy' !== $hook ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'sudoku120publisher-admin-js',
+		plugin_dir_url( __FILE__ ) . 'js/sudoku120publisher-delete-copy.js',
+		array( 'clipboard' ),
+		SUDOKU120PUBLISHER_VERSION,
+		true
+	);
+
+	wp_localize_script(
+		'sudoku120publisher-admin-js',
+		'sudoku120publisherL10n',
+		array(
+			'copy'           => esc_html__( 'Copy', 'sudoku120publisher' ),
+			'copied'         => esc_html__( 'Copied!', 'sudoku120publisher' ),
+			'confirm_delete' => esc_html__( 'Are you sure you want to delete this Sudoku?', 'sudoku120publisher' ),
+			'page'           => isset( $_GET['page'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) : '',
+			'nonce'          => esc_attr( wp_create_nonce( 'sudoku120publisher_delete_proxy' ) ),
+		)
+	);
+}
+	add_action( 'admin_enqueue_scripts', 'sudoku120publisher_enqueue_admin_scripts' );

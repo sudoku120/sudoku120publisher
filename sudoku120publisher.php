@@ -3,7 +3,7 @@
 Plugin Name: Sudoku120 Publisher
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
 Description: Plugin to integrate the Sudoku120.com webmaster Sudoku in WordPress
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -23,6 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/const-defines.php';
 
+
+
 /**
  * Main plugin class to handle activation, deactivation, and uninstall hooks.
  */
@@ -32,6 +34,7 @@ class Sudoku120Publisher {
 	 * Constructor method to include necessary files and register hooks.
 	 */
 	public function __construct() {
+
 		// Include the necessary files.
 		require_once SUDOKU120PUBLISHER_PATH . 'functions.php';
 		require_once SUDOKU120PUBLISHER_PATH . 'inc/shortcode.php';
@@ -53,9 +56,9 @@ class Sudoku120Publisher {
 
 		add_filter( 'the_content', 'sudoku120publisher_fix_link_rel', 999 );
 
-		add_filter( 'plugin_locale', array( $this, 'handle_locales' ), 1, 2 );
-
 		add_action( 'init', array( $this, 'load_textdomain_with_fallback' ) );
+
+		add_action( 'init', array( $this, 'set_version_const' ) );
 
 		add_action(
 			'after_switch_theme',
@@ -102,6 +105,19 @@ class Sudoku120Publisher {
 		);
 	}
 
+	/**
+	 * Get the plugin version from the plugin metadata and store it in a constant.
+	 * This constant is used in wp_enqueue_* functions to append the correct version to script/style URLs.
+	 */
+	public function set_version_const() {
+		if ( ! defined( 'SUDOKU120PUBLISHER_VERSION' ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+					require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+						$plugin_data = get_plugin_data( __FILE__ );
+						define( 'SUDOKU120PUBLISHER_VERSION', $plugin_data['Version'] );
+		}
+	}
 
 	/**
 	 * Load the .mo translation file for the language when no lang/region .mo file is there

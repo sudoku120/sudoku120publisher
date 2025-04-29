@@ -103,6 +103,7 @@ function sudoku120publisher_sanitize_css_filename( $input ) {
  * Display settings page
  */
 function sudoku120publisher_settings_page() {
+
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
@@ -240,18 +241,31 @@ function sudoku120publisher_settings_page() {
 
 			<p><input type="submit" name="sudoku120publisher_settings_submit" value="<?php esc_attr_e( 'Save Changes', 'sudoku120publisher' ); ?>" class="button-primary"></p>
 		</form>
-		<script>
-document.addEventListener("DOMContentLoaded", function() {
-	const customAttrInput = document.querySelector('input[name="custom_attr"]');
-	const customRadio = document.querySelector('input[name="sudoku_div_attr"][value="custom"]');
-
-	if (customAttrInput && customRadio) {
-		customAttrInput.addEventListener("focus", function() {
-			customRadio.checked = true;
-		});
-	}
-});
-</script>
 	</div>
 	<?php
 }
+
+/**
+ * Enqueues the admin-specific JavaScript files.
+ *
+ * This function checks if the current admin page is the plugin settings page,
+ * and if so, enqueues the necessary JavaScript files for the plugin.
+ *
+ * @param string $hook The current admin page hook.
+ *
+ * @return void
+ */
+function sudoku120publisher_enqueue_admin_scripts( $hook ) {
+
+	if ( 'sudoku120_page_sudoku120publisher_settings' === $hook ) {
+
+		wp_enqueue_script(
+			'sudoku120publisher-attr-focus',
+			plugin_dir_url( __FILE__ ) . 'js/sudoku120publisher-attr-focus.js',
+			array(),
+			SUDOKU120PUBLISHER_VERSION,
+			true
+		);
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sudoku120publisher_enqueue_admin_scripts' );

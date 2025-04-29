@@ -47,7 +47,7 @@ $target_dir = $upload_dir['basedir'] . '/sudoku120publisher/';
 
 // Delete the directory and its contents.
 if ( is_dir( $target_dir ) ) {
-	delete_directory_with_glob( $target_dir );
+	sudoku120publisher_delete_directory_with_glob( $target_dir );
 }
 
 /**
@@ -55,7 +55,7 @@ if ( is_dir( $target_dir ) ) {
  *
  * @param string $dir The directory path to delete.
  */
-function delete_directory_with_glob( $dir ) {
+function sudoku120publisher_delete_directory_with_glob( $dir ) {
 	global $wp_filesystem;
 
 	// Initialize WP_Filesystem if not already done.

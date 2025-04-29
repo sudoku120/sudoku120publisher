@@ -15,6 +15,9 @@ Thumbs.db
 # Log files
 *.log
 
+# Backup-Dateien
+*.old
+
 # Build files (z.B. von Webpack, Gulp oder anderen Build-Prozessen)
 dist/
 build/
