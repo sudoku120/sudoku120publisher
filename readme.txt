@@ -1,8 +1,8 @@
 === Sudoku120 Publisher ===
 Contributors: msdevcoder
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
-Version: 1.0.2
-Stable tag: 1.0.2
+Version: 1.0.3
+Stable tag: 1.0.3
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -27,6 +27,27 @@ Thanks to the reverse proxy, no requests are sent to external servers from the b
 
 The reverse proxy can also be used for other purposes. However, no URLs are rewritten in the returned data, and no cookies are forwarded in both directions. The admin can create custom reverse proxies and configure whether the user IP, user agent, and/or referer should be forwarded. While it is not recommended to forward the IP address, some services require it.
 
+There are optional response filters to the reverse proxy to improve security:
+
+json: (application/json, application/x-json, application/ld+json)
+
+xml: (application/xml, application/rss+xml, application/atom+xml, application/xslt+xml)
+
+txt: (text/plain)
+
+utf8: (text/html, application/xhtml+xml, application/javascript, application/x-javascript, text/css, text/csv, application/vnd.ms-excel, application/x-yaml, text/yaml, text/markdown, application/x-httpd-php)
+
+media: (audio/mpeg, audio/wav, audio/x-wav, audio/ogg, audio/x-ogg, audio/flac, audio/mp4, audio/x-m4a, audio/aac,
+video/mp4, video/webm, video/quicktime, video/x-msvideo, video/x-matroska, video/3gpp, video/x-flv, video/mpeg, video/x-m4v,
+image/png, image/jpeg, image/pjpeg, image/gif, image/webp, image/svg+xml, image/bmp, image/avif, image/apng,
+image/tiff, image/x-tiff, image/vnd.microsoft.icon, image/x-icon)
+
+For json and xml, the response is validated for correct structure.
+For json, xml, txt, and utf8 types, the response is checked for valid UTF-8 and control characters.
+All types are validated by MIME type.
+
+The reverse proxy also sends the `X-Content-Type-Options: nosniff` and `X-Robots-Tag: noindex, nofollow` headers by default.
+
 There are various configuration options available for the Sudoku. The user can choose between pre-designed layouts or custom styling. Additionally, outgoing links can be enhanced with extra security features and opened in a new tab or window. The surrounding div element of the Sudoku can be customized with CSS classes, IDs, or direct style definitions.
 
 A detailed tutorial video for setting up the plugin is available at: https://www.youtube.com/watch?v=OAV-H_LYO2Y
@@ -47,6 +68,27 @@ Das Sudoku120 Publisher Plugin ermöglicht es, Sudokus von https://webmaster.sud
 Dank des Reverse-Proxys werden keine Anfragen vom Browser an fremde Server gesendet, sondern alle Verbindungen erfolgen lokal. Dies sorgt für eine datenschutzkonforme Nutzung ohne externe Datenübertragungen.
 
 Der Reverse-Proxy kann auch für andere Zwecke verwendet werden. Dabei werden jedoch keine URLs in den Rückgaben umgeschrieben und es werden in beiden Richtungen keine Cookies übertragen. Der Admin kann beliebige Reverse-Proxys anlegen und dabei einstellen, ob die User-IP, der User-Agent und/oder der Referer weitergeleitet werden sollen. Die Weitergabe der IP-Adresse wird zwar nicht empfohlen, aber es gibt auch Dienste, die dies benötigen.
+
+Es gibt aktivierbare Mime Type Filter im Reverse Proxy eingebaut, um die Sicherheit zu erhöhen:
+
+json: (application/json, application/x-json, application/ld+json)
+
+xml: (application/xml, application/rss+xml, application/atom+xml, application/xslt+xml)
+
+txt: (text/plain)
+
+utf8: (text/html, application/xhtml+xml, application/javascript, application/x-javascript, text/css, text/csv, application/vnd.ms-excel, application/x-yaml, text/yaml, text/markdown, application/x-httpd-php)
+
+media: (audio/mpeg, audio/wav, audio/x-wav, audio/ogg, audio/x-ogg, audio/flac, audio/mp4, audio/x-m4a, audio/aac,
+video/mp4, video/webm, video/quicktime, video/x-msvideo, video/x-matroska, video/3gpp, video/x-flv, video/mpeg, video/x-m4v,
+image/png, image/jpeg, image/pjpeg, image/gif, image/webp, image/svg+xml, image/bmp, image/avif, image/apng,
+image/tiff, image/x-tiff, image/vnd.microsoft.icon, image/x-icon)
+
+Bei json und xml wird die Antwort auf korrektes Format geprüft.
+Bei json, xml, txt und utf8 erfolgt eine Prüfung auf gültiges UTF-8 und Steuerzeichen.
+Alle Formate werden anhand ihres MIME-Typs überprüft.
+
+Der Reverse Proxy sendet außerdem standardmäßig die Header `X-Content-Type-Options: nosniff` und `X-Robots-Tag: noindex, nofollow`.
 
 Es stehen verschiedene Einstellungsmöglichkeiten für das Sudoku zur Verfügung. So kann der Benutzer zwischen verschiedenen vorgefertigten Designs oder einer eigenen Gestaltung wählen. Weiterhin können ausgehende Links mit zusätzlichen Sicherheitsmerkmalen versehen und in einem neuen Tab oder Browserfenster geöffnet werden. Das umgebende div-Element des Sudokus kann mit benutzerdefinierten CSS-Klassen, IDs oder direkten Style-Definitionen versehen werden.
 
@@ -248,3 +290,8 @@ Nutzungsbedingungen: https://webmaster.sudoku120.com/de/nutzungsbedingungen
 * Removed usage of cURL to improve compatibility and security.
 * Added additional sanitization and escaping to meet WordPress Plugin Directory requirements.
 * Revised readme.txt and added detailed information about the external service integration.
+
+= 1.0.3 =
+* Added selectable MIME type filter and content validation to the reverse proxy
+* Added `X-Content-Type-Options: nosniff` and `X-Robots-Tag: noindex, nofollow` headers to reverse proxy responses
+* Added daily cron job for status check of all Sudokus

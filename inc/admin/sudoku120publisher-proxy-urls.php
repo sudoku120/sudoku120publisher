@@ -27,7 +27,8 @@ function sudoku120publisher_proxy_url_page() {
 		return;
 	}
 	global $wpdb;
-	$table_name = SUDOKU120PUBLISHER_TABLE_PROXY;
+	$allowed_groups = array( 'json', 'xml', 'txt', 'utf8', 'media' );
+	$table_name     = SUDOKU120PUBLISHER_TABLE_PROXY;
 	// Handle Deletion.
 	if ( isset( $_GET['delete'] ) ) {
 
@@ -88,6 +89,18 @@ function sudoku120publisher_proxy_url_page() {
 				);
 				return false;  // Invalid URL.
 			}
+			$mimetype_groups = isset( $_POST['mimetype_groups'] ) && is_array( $_POST['mimetype_groups'] )
+			? array_map( 'sanitize_text_field', wp_unslash( $_POST['mimetype_groups'] ) )
+			: array();
+
+			$mimetype_groups      = array_filter(
+				$mimetype_groups,
+				function ( $group ) use ( $allowed_groups ) {
+						return in_array( $group, $allowed_groups, true );
+				}
+			);
+			$mimetype_groups_json = ! empty( $mimetype_groups ) ? wp_json_encode( $mimetype_groups ) : null;
+
 		}
 		if ( ! empty( $_POST['proxy_id'] ) ) {
 			$id         = intval( $_POST['proxy_id'] );
@@ -101,9 +114,10 @@ function sudoku120publisher_proxy_url_page() {
 					'client_ip'  => $client_ip,
 					'user_agent' => $user_agent,
 					'referrer'   => $referrer,
+					'mimetypes'  => $mimetype_groups_json,
 				),
 				array( 'id' => $id ),
-				array( '%s', '%d', '%d', '%d' ),
+				array( '%s', '%d', '%d', '%d', '%s' ),
 				array( '%d' )
 			);
 			echo '<div class="updated"><p>' . esc_html__( 'Proxy entry updated.', 'sudoku120publisher' ) . '</p></div>';
@@ -119,13 +133,25 @@ function sudoku120publisher_proxy_url_page() {
 			echo '<div class="error"><p>' . esc_html__( 'Nonce verification failed. Please try again.', 'sudoku120publisher' ) . '</p></div>';
 			return;
 		}
+		$mimetype_groups = isset( $_POST['mimetype_groups'] ) && is_array( $_POST['mimetype_groups'] )
+		? array_map( 'sanitize_text_field', wp_unslash( $_POST['mimetype_groups'] ) )
+		: array();
+
+		$mimetype_groups      = array_filter(
+			$mimetype_groups,
+			function ( $group ) use ( $allowed_groups ) {
+					return in_array( $group, $allowed_groups, true );
+			}
+		);
+		$mimetype_groups_json = ! empty( $mimetype_groups ) ? wp_json_encode( $mimetype_groups ) : null;
+
 		if ( ! empty( $_POST['url'] ) ) {
 			$url        = sudoku120publisher_idn_to_ascii_url( sanitize_text_field( wp_unslash( $_POST['url'] ) ) );
 			$client_ip  = isset( $_POST['client_ip'] ) ? 1 : 0;
 			$user_agent = isset( $_POST['user_agent'] ) ? 1 : 0;
 			$referrer   = isset( $_POST['referrer'] ) ? 1 : 0;
 
-			sudoku120publisher_insert_proxy_url( $url, null, $client_ip, $user_agent, $referrer );
+			sudoku120publisher_insert_proxy_url( $url, null, $client_ip, $user_agent, $referrer, $mimetype_groups_json );
 		}
 	}
 
@@ -151,6 +177,7 @@ function sudoku120publisher_proxy_url_page() {
 				<th><?php echo esc_html__( 'Client IP', 'sudoku120publisher' ); ?></th>
 				<th><?php echo esc_html__( 'User Agent', 'sudoku120publisher' ); ?></th>
 				<th><?php echo esc_html__( 'Referrer', 'sudoku120publisher' ); ?></th>
+				<th><?php echo esc_html__( 'Filter', 'sudoku120publisher' ); ?></th>
 				<th><?php echo esc_html__( 'Actions', 'sudoku120publisher' ); ?></th>
 			</tr>
 		</thead>
@@ -160,6 +187,7 @@ function sudoku120publisher_proxy_url_page() {
 			foreach ( $proxies as $proxy ) :
 				// Generate the full local proxy URL.
 				$local_proxy_url = home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' );
+				$mimetype_groups = $proxy->mimetypes ? json_decode( $proxy->mimetypes, true ) : array();
 				?>
 			<tr>
 				<td><?php echo esc_html( $proxy->id ); ?></td>
@@ -192,6 +220,7 @@ function sudoku120publisher_proxy_url_page() {
 <td><?php echo $proxy->client_ip ? esc_html__( 'Yes', 'sudoku120publisher' ) . ' &#9888;' : esc_html__( 'No', 'sudoku120publisher' ) . ' &#10004;'; ?></td>
 <td><?php echo $proxy->user_agent ? esc_html__( 'Yes', 'sudoku120publisher' ) : esc_html__( 'No', 'sudoku120publisher' ) . ' &#10004;'; ?></td>
 <td><?php echo $proxy->referrer ? esc_html__( 'Yes', 'sudoku120publisher' ) : esc_html__( 'No', 'sudoku120publisher' ) . ' &#10004;'; ?></td>
+<td><?php echo esc_html( implode( ' ', $mimetype_groups ) ); ?></td>
 <td>
 				<?php if ( is_null( $proxy->sudoku_id ) ) : ?>
 					<a href="<?php echo esc_url( '?page=sudoku120publisher_proxy&edit=' . $proxy->id . '&editnonce=' . $editnounce ); ?>">
@@ -219,17 +248,26 @@ function sudoku120publisher_proxy_url_page() {
 		$edit_id = intval( $_GET['edit'] );
 		$proxy   = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . esc_sql( $table_name ) . ' WHERE id = %d', $edit_id ) );
 		if ( $proxy ) :
+				$proxy->mimetype_groups = $proxy->mimetypes ? json_decode( $proxy->mimetypes, true ) : array();
 			?>
 		<h2><?php echo esc_html__( 'Edit Proxy', 'sudoku120publisher' ); ?></h2>
 		<form method="post">
 				<?php wp_nonce_field( 'sudoku120publisher_edit_proxy', 'sudoku120publisher_nonce' ); ?>
 			<input type="hidden" name="proxy_id" value="<?php echo esc_attr( $proxy->id ); ?>">
-			<label><?php echo esc_html__( 'URL:', 'sudoku120publisher' ); ?> <input type="text" name="url" value="<?php echo esc_attr( sudoku120publisher_idn_to_utf8_url( $proxy->url ) ); ?>" required class="regular-text"></label>
+			<label><?php echo esc_html__( 'URL:', 'sudoku120publisher' ); ?> <input type="text" name="url" value="<?php echo esc_attr( sudoku120publisher_idn_to_utf8_url( $proxy->url ) ); ?>" required class="regular-text"></label><br>
 			<label><input type="checkbox" name="client_ip" <?php checked( $proxy->client_ip, 1 ); ?>> <?php echo esc_html__( 'Forward Client IP', 'sudoku120publisher' ); ?></label>
 			<label><input type="checkbox" name="user_agent" <?php checked( $proxy->user_agent, 1 ); ?>> <?php echo esc_html__( 'Forward User Agent', 'sudoku120publisher' ); ?></label>
-			<label><input type="checkbox" name="referrer" <?php checked( $proxy->referrer, 1 ); ?>> <?php echo esc_html__( 'Forward Referrer', 'sudoku120publisher' ); ?></label>
+			<label><input type="checkbox" name="referrer" <?php checked( $proxy->referrer, 1 ); ?>> <?php echo esc_html__( 'Forward Referrer', 'sudoku120publisher' ); ?></label><br><br>
+
+			<!-- Mimetype Group Checkboxes -->
+			<b><?php echo esc_html__( 'Mimetype Filter', 'sudoku120publisher' ); ?></b><br><br>
+			<label><input type="checkbox" name="mimetype_groups[]" value="json" <?php checked( in_array( 'json', $proxy->mimetype_groups, true ) ); ?>> <?php echo esc_html__( 'json: (json, x-json, ld+json)', 'sudoku120publisher' ); ?></label><br>
+			<label><input type="checkbox" name="mimetype_groups[]" value="xml" <?php checked( in_array( 'xml', $proxy->mimetype_groups, true ) ); ?>> <?php echo esc_html__( 'xml: (xml, rss+xml, atom+xml)', 'sudoku120publisher' ); ?></label><br>
+			<label><input type="checkbox" name="mimetype_groups[]" value="txt" <?php checked( in_array( 'txt', $proxy->mimetype_groups, true ) ); ?>> <?php echo esc_html__( 'txt: Plain Text (.txt)', 'sudoku120publisher' ); ?></label><br>
+			<label><input type="checkbox" name="mimetype_groups[]" value="utf8" <?php checked( in_array( 'utf8', $proxy->mimetype_groups, true ) ); ?>> <?php echo esc_html__( 'utf8: (HTML, CSS, JS, etc.)', 'sudoku120publisher' ); ?></label><br>
+			<label><input type="checkbox" name="mimetype_groups[]" value="media" <?php checked( in_array( 'media', $proxy->mimetype_groups, true ) ); ?>> <?php echo esc_html__( 'media: Audio, Video, Image formats', 'sudoku120publisher' ); ?></label><br><br>
+
 			<input type="submit" name="edit_proxy" value="<?php echo esc_html__( 'Save Changes', 'sudoku120publisher' ); ?>" class="button-primary">
-			<!-- Cancel Button -->
 			<button type="button" onclick="window.location.href = '<?php echo esc_url( admin_url( 'admin.php?page=sudoku120publisher_proxy' ) ); ?>';" class="button-secondary"><?php echo esc_html__( 'Cancel', 'sudoku120publisher' ); ?></button>
 		</form>
 		<?php endif; ?>
@@ -238,14 +276,28 @@ function sudoku120publisher_proxy_url_page() {
 <h2><?php echo esc_html__( 'Add New Proxy', 'sudoku120publisher' ); ?></h2>
 <form method="post">
 	<?php wp_nonce_field( 'sudoku120publisher_add_proxy', 'sudoku120publisher_nonce' ); ?>
-	<label><?php echo esc_html__( 'Remote URL:', 'sudoku120publisher' ); ?> <input type="text" name="url" required class="regular-text"></label>
+	<label><?php echo esc_html__( 'Remote URL:', 'sudoku120publisher' ); ?> <input type="text" name="url" required class="regular-text"></label><br>
 	<label><input type="checkbox" name="client_ip"> <?php esc_html_e( 'Forward Client IP', 'sudoku120publisher' ); ?></label>
 	<label><input type="checkbox" name="user_agent"> <?php esc_html_e( 'Forward User Agent', 'sudoku120publisher' ); ?></label>
-	<label><input type="checkbox" name="referrer" checked> <?php esc_html_e( 'Forward Referrer', 'sudoku120publisher' ); ?></label>
+	<label><input type="checkbox" name="referrer" checked> <?php esc_html_e( 'Forward Referrer', 'sudoku120publisher' ); ?></label><br><br>
+
+	<!-- Mimetype Group Checkboxes -->
+		<b><?php echo esc_html__( 'Mimetype Filter', 'sudoku120publisher' ); ?></b><br>
+		<?php
+		esc_html_e( 'Select which types of responses are allowed through the proxy. If no types are selected, all content types are allowed by default.', 'sudoku120publisher' );
+		?>
+		<br><br>
+		<label><input type="checkbox" name="mimetype_groups[]" value="json"> <?php echo esc_html__( 'json: (json, x-json, ld+json)', 'sudoku120publisher' ); ?></label><br>
+		<label><input type="checkbox" name="mimetype_groups[]" value="xml"> <?php echo esc_html__( 'xml: (xml, rss+xml, atom+xml)', 'sudoku120publisher' ); ?></label><br>
+		<label><input type="checkbox" name="mimetype_groups[]" value="txt"> <?php echo esc_html__( 'txt: Plain Text (.txt)', 'sudoku120publisher' ); ?></label><br>
+		<label><input type="checkbox" name="mimetype_groups[]" value="utf8"> <?php echo esc_html__( 'utf8: (HTML, CSS, JS, etc.)', 'sudoku120publisher' ); ?></label><br>
+		<label><input type="checkbox" name="mimetype_groups[]" value="media"> <?php echo esc_html__( 'media: Audio, Video, Image formats', 'sudoku120publisher' ); ?></label><br><br>
+
+
 	<input type="submit" name="add_proxy" value="<?php esc_html_e( 'Add Proxy', 'sudoku120publisher' ); ?>" class="button-primary">
 </form>
 </div>
-
+	</p>
 	<?php
 }
 

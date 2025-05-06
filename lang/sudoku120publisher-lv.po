@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sudoku120publisher\n"
-"POT-Creation-Date: 2025-04-09 19:09+0200\n"
-"PO-Revision-Date: 2025-04-09 19:09+0200\n"
+"POT-Creation-Date: 2025-05-06 21:34+0200\n"
+"PO-Revision-Date: 2025-05-06 21:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lv\n"
@@ -17,199 +17,244 @@ msgstr ""
 "X-Poedit-SearchPath-0: lang\n"
 "X-Poedit-SearchPath-1: .\n"
 
-#: functions.php:37 inc/admin/sudoku120publisher-proxy-urls.php:83
-#: inc/admin/sudoku120publisher-sudoku-list.php:52
-#: inc/admin/sudoku120publisher-sudoku-list.php:324
+#: functions.php:38 inc/admin/sudoku120publisher-proxy-urls.php:87
+#: inc/admin/sudoku120publisher-sudoku-list.php:56
+#: inc/admin/sudoku120publisher-sudoku-list.php:350
 msgid "Please enter a valid URL."
 msgstr "Lūdzu, ievadiet derīgu URL."
 
-#: inc/admin/admin-menus.php:29
-msgid "Sudoku120 Publisher"
-msgstr "Sudoku120 Publisher"
+#: functions.php:276
+msgid "API URL is missing or invalid."
+msgstr "Trūkst API URL vai tas ir nederīgs."
 
-#: inc/admin/admin-menus.php:30
+#: functions.php:289
+msgid "Failed to parse API response."
+msgstr "Neizdevās analizēt API atbildi."
+
+#: inc/admin/admin-menus.php:34
 msgid "Sudoku120"
 msgstr "Sudoku120"
 
-#: inc/admin/admin-menus.php:41 inc/admin/admin-menus.php:42
+#: inc/admin/admin-menus.php:41
+msgid "Sudoku120 Publisher"
+msgstr "Sudoku120 Publisher"
+
+#: inc/admin/admin-menus.php:53 inc/admin/admin-menus.php:54
 msgid "Settings"
 msgstr "Sudoku120 iestatījumi"
 
-#: inc/admin/admin-menus.php:51 inc/admin/admin-menus.php:52
+#: inc/admin/admin-menus.php:63 inc/admin/admin-menus.php:64
 msgid "Sudoku120 Proxy"
 msgstr "Sudoku120 Proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:34
-#: inc/admin/sudoku120publisher-proxy-urls.php:71
-#: inc/admin/sudoku120publisher-proxy-urls.php:116
+#: inc/admin/sudoku120publisher-proxy-urls.php:38
+#: inc/admin/sudoku120publisher-proxy-urls.php:75
+#: inc/admin/sudoku120publisher-proxy-urls.php:133
 msgid "Nonce verification failed. Please try again."
 msgstr "Nonce verifikācija neizdevās. Lūdzu, mēģiniet vēlreiz."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:58
+#: inc/admin/sudoku120publisher-proxy-urls.php:62
 msgid "Proxy entry deleted."
 msgstr "Proxy ieraksts dzēsts."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:60
+#: inc/admin/sudoku120publisher-proxy-urls.php:64
 msgid "Cannot delete proxy linked to a Sudoku."
 msgstr "Nevar izdzēst ar Sudoku saistīto proxy."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:64
+#: inc/admin/sudoku120publisher-proxy-urls.php:68
 msgid "Invalid request. Please try again."
 msgstr "Nederīgs pieprasījums. Lūdzu, mēģiniet vēlreiz."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:106
+#: inc/admin/sudoku120publisher-proxy-urls.php:123
 msgid "Proxy entry updated."
 msgstr "Proxy ieraksts atjaunināts."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:142
-msgid ""
-"Warning: cURL is not available on this server. IP address, User-Agent and "
-"Referer forwarding will not work. WordPress fallback will be used instead"
-msgstr ""
-"Brīdinājums: cURL šajā serverī nav pieejams. IP adrese, lietotāja aģents un "
-"atsauces pārsūtīšana nedarbosies. Tā vietā tiks izmantots WordPress fallback"
-
-#: inc/admin/sudoku120publisher-proxy-urls.php:147
+#: inc/admin/sudoku120publisher-proxy-urls.php:169
 msgid "Sudoku120 Proxy List"
 msgstr "Sudoku120 Proxy saraksts"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:152
+#: inc/admin/sudoku120publisher-proxy-urls.php:174
 msgid "ID"
 msgstr "PROXY ID"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:153
+#: inc/admin/sudoku120publisher-proxy-urls.php:175
 msgid "Local URL"
 msgstr "Vietējais URL"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:154
+#: inc/admin/sudoku120publisher-proxy-urls.php:176
 msgid "Remote URL"
 msgstr "Attālais URL"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:155
+#: inc/admin/sudoku120publisher-proxy-urls.php:177
 msgid "Client IP"
 msgstr "Klienta IP"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:156
+#: inc/admin/sudoku120publisher-proxy-urls.php:178
 msgid "User Agent"
 msgstr "Lietotāja aģents"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:157
+#: inc/admin/sudoku120publisher-proxy-urls.php:179
 msgid "Referrer"
 msgstr "Atsaucējs"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:158
+#: inc/admin/sudoku120publisher-proxy-urls.php:180
+msgid "Filter"
+msgstr "Filtrs"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:181
 msgid "Actions"
 msgstr "Darbības"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:172
-#: inc/admin/sudoku120publisher-proxy-urls.php:261
-#: inc/admin/sudoku120publisher-sudoku-list.php:198
-#: inc/admin/sudoku120publisher-sudoku-list.php:216
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:332
+#: inc/admin/sudoku120publisher-sudoku-list.php:215
+#: inc/admin/sudoku120publisher-sudoku-list.php:233
+#: inc/admin/sudoku120publisher-sudoku-list.php:322
 msgid "Copy"
 msgstr "Kopēt"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:195
-#: inc/admin/sudoku120publisher-proxy-urls.php:196
-#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:220
+#: inc/admin/sudoku120publisher-proxy-urls.php:221
+#: inc/admin/sudoku120publisher-proxy-urls.php:222
 msgid "Yes"
 msgstr "Jā"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:195
-#: inc/admin/sudoku120publisher-proxy-urls.php:196
-#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:220
+#: inc/admin/sudoku120publisher-proxy-urls.php:221
+#: inc/admin/sudoku120publisher-proxy-urls.php:222
 msgid "No"
 msgstr "Nē"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:200
+#: inc/admin/sudoku120publisher-proxy-urls.php:227
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:202
+#: inc/admin/sudoku120publisher-proxy-urls.php:230
 msgid "Delete"
 msgstr "Dzēst"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:208
+#: inc/admin/sudoku120publisher-proxy-urls.php:236
 #, php-format
 msgid "Sudoku id=%s"
 msgstr "Sudoku id=%s"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:224
+#: inc/admin/sudoku120publisher-proxy-urls.php:253
 msgid "Edit Proxy"
 msgstr "Rediģēt Proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:228
+#: inc/admin/sudoku120publisher-proxy-urls.php:257
 msgid "URL:"
 msgstr "URL:"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:229
-#: inc/admin/sudoku120publisher-proxy-urls.php:243
+#: inc/admin/sudoku120publisher-proxy-urls.php:258
+#: inc/admin/sudoku120publisher-proxy-urls.php:280
 msgid "Forward Client IP"
 msgstr "Pārsūtīt klienta IP"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:230
-#: inc/admin/sudoku120publisher-proxy-urls.php:244
+#: inc/admin/sudoku120publisher-proxy-urls.php:259
+#: inc/admin/sudoku120publisher-proxy-urls.php:281
 msgid "Forward User Agent"
 msgstr "Pārsūtīt lietotāja aģentu"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:231
-#: inc/admin/sudoku120publisher-proxy-urls.php:245
+#: inc/admin/sudoku120publisher-proxy-urls.php:260
+#: inc/admin/sudoku120publisher-proxy-urls.php:282
 msgid "Forward Referrer"
 msgstr "Pārsūtīt novirzītāju"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:232
-#: inc/admin/sudoku120publisher-settings.php:165
+#: inc/admin/sudoku120publisher-proxy-urls.php:263
+#: inc/admin/sudoku120publisher-proxy-urls.php:285
+msgid "Mimetype Filter"
+msgstr "MIME veida filtrs"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:264
+#: inc/admin/sudoku120publisher-proxy-urls.php:289
+msgid "json: (json, x-json, ld+json)"
+msgstr "json: (json, x-json, ld+json)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:265
+#: inc/admin/sudoku120publisher-proxy-urls.php:290
+msgid "xml: (xml, rss+xml, atom+xml)"
+msgstr "xml: (xml, rss+xml, atom+xml)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:266
+#: inc/admin/sudoku120publisher-proxy-urls.php:291
+msgid "txt: Plain Text (.txt)"
+msgstr "txt: Vienkāršs teksts (.txt)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:267
+#: inc/admin/sudoku120publisher-proxy-urls.php:292
+msgid "utf8: (HTML, CSS, JS, etc.)"
+msgstr "utf8: (HTML, CSS, JS utt.)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:268
+#: inc/admin/sudoku120publisher-proxy-urls.php:293
+msgid "media: Audio, Video, Image formats"
+msgstr "media: Audio, video, attēlu formāti"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:270
+#: inc/admin/sudoku120publisher-settings.php:242
 msgid "Save Changes"
 msgstr "Saglabāt izmaiņas"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:234
+#: inc/admin/sudoku120publisher-proxy-urls.php:271
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:239
+#: inc/admin/sudoku120publisher-proxy-urls.php:276
 msgid "Add New Proxy"
 msgstr "Pievienot jaunu starpniekserveri"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:242
+#: inc/admin/sudoku120publisher-proxy-urls.php:279
 msgid "Remote URL:"
 msgstr "Attālais URL:"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:246
+#: inc/admin/sudoku120publisher-proxy-urls.php:287
+msgid ""
+"Select which types of responses are allowed through the proxy. If no types "
+"are selected, all content types are allowed by default."
+msgstr ""
+"Izvēlieties, kuri atbildes veidi ir atļauti caur starpniekserveri. Ja nav "
+"izvēlēts neviens veids, pēc noklusējuma ir atļauti visi satura veidi."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:296
 msgid "Add Proxy"
 msgstr "Pievienojiet starpniekserveri"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:259
+#: inc/admin/sudoku120publisher-proxy-urls.php:333
+#: inc/admin/sudoku120publisher-sudoku-list.php:323
 msgid "Copied!"
 msgstr "Kopēts!"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:270
-msgid "Are you sure you want to delete this proxy?"
-msgstr "Vai esat pārliecināts, ka vēlaties izdzēst šo proxy?"
+#: inc/admin/sudoku120publisher-proxy-urls.php:334
+#: inc/admin/sudoku120publisher-sudoku-list.php:324
+msgid "Are you sure you want to delete this Sudoku?"
+msgstr "Vai esat pārliecināts, ka vēlaties izdzēst šo Sudoku?"
 
-#: inc/admin/sudoku120publisher-settings.php:101
+#: inc/admin/sudoku120publisher-settings.php:178
 msgid "None"
 msgstr "Nav"
 
-#: inc/admin/sudoku120publisher-settings.php:111
+#: inc/admin/sudoku120publisher-settings.php:188
 msgid "Sudoku120 Publisher Settings"
 msgstr "Sudoku120  Publisher iestatījumi"
 
-#: inc/admin/sudoku120publisher-settings.php:115
+#: inc/admin/sudoku120publisher-settings.php:192
 msgid "Reverse Proxy Settings"
 msgstr "Reversā starpniekservera iestatījumi"
 
-#: inc/admin/sudoku120publisher-settings.php:118
+#: inc/admin/sudoku120publisher-settings.php:195
 msgid "Enable Reverse Proxy"
 msgstr "Ieslēgt reverso starpniekserveri"
 
-#: inc/admin/sudoku120publisher-settings.php:120
+#: inc/admin/sudoku120publisher-settings.php:197
 msgid "Enable or disable the proxy feature."
 msgstr "Iespējot vai atspējot proxy funkciju."
 
-#: inc/admin/sudoku120publisher-settings.php:122
+#: inc/admin/sudoku120publisher-settings.php:199
 msgid "Sudoku Design Settings"
 msgstr "Sudoku dizaina iestatījumi"
 
-#: inc/admin/sudoku120publisher-settings.php:130
+#: inc/admin/sudoku120publisher-settings.php:207
 msgid ""
 "Choose a CSS file for styling or select none. You can place your own design "
 "css in uploads/sudoku120publisher/designs/ and select it then here"
@@ -218,38 +263,38 @@ msgstr ""
 "ievietot savu dizaina css vietnē uploads/sudoku120publisher/designs/ un pēc "
 "tam izvēlēties to šeit."
 
-#: inc/admin/sudoku120publisher-settings.php:132
+#: inc/admin/sudoku120publisher-settings.php:209
 msgid "Sudoku Container Attributes"
 msgstr "Sudoku konteinera atribūti"
 
-#: inc/admin/sudoku120publisher-settings.php:142
+#: inc/admin/sudoku120publisher-settings.php:219
 msgid "Custom Attributes"
 msgstr "Pielāgotie atribūti"
 
-#: inc/admin/sudoku120publisher-settings.php:149
+#: inc/admin/sudoku120publisher-settings.php:226
 msgid ""
 "Extra Attributes for the div around the sudoku, set id, classes or direct a "
 "style.."
 msgstr ""
 "Papildu atribūti div ap sudoku, iestatiet id, klases vai virziet stilu..."
 
-#: inc/admin/sudoku120publisher-settings.php:153
+#: inc/admin/sudoku120publisher-settings.php:230
 msgid "Outgoing Sudoku Link Settings"
 msgstr "Izejošās sudoku saites iestatījumi"
 
-#: inc/admin/sudoku120publisher-settings.php:156
+#: inc/admin/sudoku120publisher-settings.php:233
 msgid "rel=\"noopener noreferrer\""
 msgstr "rel=\"noopener noreferrer”"
 
-#: inc/admin/sudoku120publisher-settings.php:158
+#: inc/admin/sudoku120publisher-settings.php:235
 msgid "rel=\"noopener noreferrer\" are security features for links"
 msgstr "rel=“noopener noreferrer” ir drošības elementi saitēm"
 
-#: inc/admin/sudoku120publisher-settings.php:161
+#: inc/admin/sudoku120publisher-settings.php:238
 msgid "target=\"_blank\""
 msgstr "target=\"_blank”"
 
-#: inc/admin/sudoku120publisher-settings.php:163
+#: inc/admin/sudoku120publisher-settings.php:240
 msgid ""
 "target=\"_blank\" will open the Link in a new browser tab or window when you "
 "click it."
@@ -257,7 +302,7 @@ msgstr ""
 "target=\"_blank\" pēc saites klikšķa atvērs saiti jaunā pārlūkprogrammas "
 "cilnē vai logā."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:40
+#: inc/admin/sudoku120publisher-sudoku-list.php:44
 msgid ""
 "Please enter a valid API Key in UUID format (xxxxxxxx-xxxx-xxxx-xxxx-"
 "xxxxxxxxxxxx)."
@@ -265,116 +310,120 @@ msgstr ""
 "Lūdzu, ievadiet derīgu API atslēgu UUID formātā (xxxxxxxx-xxxx-xxxx-xxxx-"
 "xxxx-xxxxxxxxxxxx)."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:59
+#: inc/admin/sudoku120publisher-sudoku-list.php:63
 msgid "Please provide either an API Key or a Proxy URL."
 msgstr "Lūdzu, norādiet API atslēgu vai proxy URL."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:68
+#: inc/admin/sudoku120publisher-sudoku-list.php:72
 msgid "New Sudoku created successfully."
 msgstr "Veiksmīgi izveidots jauns sudoku."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:79
-#: inc/admin/sudoku120publisher-sudoku-list.php:94
+#: inc/admin/sudoku120publisher-sudoku-list.php:83
+#: inc/admin/sudoku120publisher-sudoku-list.php:98
 msgid "Invalid request, please try again."
 msgstr "Nederīgs pieprasījums, lūdzu, mēģiniet vēlreiz."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:81
-#: inc/admin/sudoku120publisher-sudoku-list.php:96
+#: inc/admin/sudoku120publisher-sudoku-list.php:85
+#: inc/admin/sudoku120publisher-sudoku-list.php:100
 msgid "You do not have permission to perform this action."
 msgstr "Jums nav tiesību veikt šo darbību."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:84
+#: inc/admin/sudoku120publisher-sudoku-list.php:88
 msgid "API data updated successfully."
 msgstr "API dati veiksmīgi atjaunināti."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:124
+#: inc/admin/sudoku120publisher-sudoku-list.php:128
 msgid "Sudoku deleted successfully."
 msgstr "Sudoku veiksmīgi izdzēsts."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:134
+#: inc/admin/sudoku120publisher-sudoku-list.php:138
 msgid "Sudoku120 Publisher - Sudoku Management"
 msgstr "Sudoku120 Publisher - Sudoku pārvaldība"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:145
+#: inc/admin/sudoku120publisher-sudoku-list.php:149
 msgid "Approved"
 msgstr "Apstiprināts"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:147
+#: inc/admin/sudoku120publisher-sudoku-list.php:151
 msgid "Pending"
 msgstr "Gaida"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:149
+#: inc/admin/sudoku120publisher-sudoku-list.php:153
 msgid "Rejected"
 msgstr "Noraidīts"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:151
+#: inc/admin/sudoku120publisher-sudoku-list.php:155
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:156
+#: inc/admin/sudoku120publisher-sudoku-list.php:173
 msgid "Sudokus"
 msgstr "Sudokus"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:169
+#: inc/admin/sudoku120publisher-sudoku-list.php:186
 msgid "Active"
 msgstr "Aktīvs"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:171
+#: inc/admin/sudoku120publisher-sudoku-list.php:188
 msgid "Configuration"
 msgstr "Konfigurācija"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:173
+#: inc/admin/sudoku120publisher-sudoku-list.php:190
 msgid "Inactive"
 msgstr "Neaktīva"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:175
+#: inc/admin/sudoku120publisher-sudoku-list.php:192
 msgid "Problem"
 msgstr "Problēma"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:194
+#: inc/admin/sudoku120publisher-sudoku-list.php:211
 msgid "API URL:"
 msgstr "API URL:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:202
+#: inc/admin/sudoku120publisher-sudoku-list.php:219
 #, php-format
 msgid "Copy the API URL and enter it on %s"
 msgstr "Kopējiet API URL un ievadiet to %s"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:206
+#: inc/admin/sudoku120publisher-sudoku-list.php:223
 msgid "Use now the shortcode in a page or post"
 msgstr "Tagad izmantojiet īskodu lapā vai ierakstā"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:213
+#: inc/admin/sudoku120publisher-sudoku-list.php:230
 msgid "Sudoku URL:"
 msgstr "Sudoku URL:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:220
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
 #, php-format
 msgid "Copy the Sudoku URL and enter it on %s"
 msgstr "Nokopējiet Sudoku URL un ievadiet to %s"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:232
+#: inc/admin/sudoku120publisher-sudoku-list.php:246
+msgid "Update API Data"
+msgstr "Atjaunināt API datus"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:249
 msgid "Delete Sudoku"
 msgstr "Dzēst Sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:237
+#: inc/admin/sudoku120publisher-sudoku-list.php:254
 msgid "Shortcode:"
 msgstr "Īsais kods:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:237
+#: inc/admin/sudoku120publisher-sudoku-list.php:254
 msgid "replace the x with the id of the Sudoku."
 msgstr "Aizstājiet x ar Sudoku id."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:240
+#: inc/admin/sudoku120publisher-sudoku-list.php:257
 msgid "Add New Sudoku"
 msgstr "Pievienot jaunu sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:244
+#: inc/admin/sudoku120publisher-sudoku-list.php:261
 #, php-format
 msgid "Login on %s and create a sudoku there"
 msgstr "Piesakieties vietnē %s un izveidojiet tur sudoku."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:247
+#: inc/admin/sudoku120publisher-sudoku-list.php:264
 msgid ""
 "When the reverse proxy function is enabled you can enter the API Token to "
 "create the proxy url."
@@ -382,7 +431,7 @@ msgstr ""
 "Ja ir iespējota reversā proxy funkcija, varat ievadīt API žetonu, lai "
 "izveidotu proxy url."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:248
+#: inc/admin/sudoku120publisher-sudoku-list.php:265
 msgid ""
 "Or create a reverse proxy in the webserver config and enter the url as Proxy "
 "URL."
@@ -390,71 +439,59 @@ msgstr ""
 "Vai arī izveidojiet reverso proxy tīmekļa servera konfigurācijā un ievadiet "
 "url kā Proxy URL."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:249
+#: inc/admin/sudoku120publisher-sudoku-list.php:266
 msgid ""
 "Update the API Data after every setup step, to get the actual status here."
 msgstr ""
 "Pēc katra iestatīšanas soļa atjauniniet API datus, lai šeit iegūtu faktisko "
 "statusu."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:255
+#: inc/admin/sudoku120publisher-sudoku-list.php:272
 msgid "API Token"
 msgstr "API žetons"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:262
+#: inc/admin/sudoku120publisher-sudoku-list.php:279
 msgid "Proxy URL"
 msgstr "Proxy URL"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:269
+#: inc/admin/sudoku120publisher-sudoku-list.php:286
 msgid "Create Sudoku"
 msgstr "Izveidot sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:293
-msgid "Are you sure you want to delete this Sudoku?"
-msgstr "Vai esat pārliecināts, ka vēlaties izdzēst šo Sudoku?"
-
-#: inc/admin/sudoku120publisher-sudoku-list.php:342
+#: inc/admin/sudoku120publisher-sudoku-list.php:368
 msgid "Failed to create Sudoku entry."
 msgstr "Neizdevās izveidot Sudoku ierakstu."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:362
+#: inc/admin/sudoku120publisher-sudoku-list.php:395
 msgid "No proxy found for the Sudoku."
 msgstr "Sudoku nav atrasts pilnvarotais pārstāvis."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:417
+#: inc/admin/sudoku120publisher-sudoku-list.php:450
 msgid "Invalid Sudoku ID or missing API URL."
 msgstr "Nederīgs Sudoku ID vai trūkst API URL."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:438
+#: inc/admin/sudoku120publisher-sudoku-list.php:471
 #, php-format
 msgid "Failed to fetch Sudoku HTML (HTTP %d)."
 msgstr "Neizdevās iegūt Sudoku HTML (HTTP %d)."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:490
-msgid "API URL is missing or invalid."
-msgstr "Trūkst API URL vai tas ir nederīgs."
-
-#: inc/admin/sudoku120publisher-sudoku-list.php:503
-msgid "Failed to parse API response."
-msgstr "Neizdevās analizēt API atbildi."
-
-#: inc/class-sudoku120publisher-activate.php:141
+#: inc/class-sudoku120publisher-activate.php:104
 msgid "Error during plugin activation: "
 msgstr "Kļūda spraudņa aktivizēšanas laikā:"
 
-#: inc/class-sudoku120publisher-activate.php:192
+#: inc/class-sudoku120publisher-activate.php:155
 msgid "Error when manually triggering the process: "
 msgstr "Kļūda, manuāli aktivizējot procesu:"
 
-#: inc/reverse-proxy.php:32
+#: inc/reverse-proxy.php:86
 msgid "Proxy is disabled."
 msgstr "Proxy ir atspējots."
 
-#: inc/reverse-proxy.php:51
+#: inc/reverse-proxy.php:101
 msgid "Invalid proxy UUID."
 msgstr "Nederīgs proxy UUID."
 
-#: inc/reverse-proxy.php:120
+#: inc/reverse-proxy.php:151
 msgid "Failed to fetch remote content."
 msgstr "Neizdevās iegūt attālo saturu."
 
@@ -475,6 +512,17 @@ msgstr "Kļūda: Šo Sudoku var parādīt tikai %s."
 msgid "Error: Only one Sudoku shortcode is allowed per page."
 msgstr "Kļūda: Vienā lapā ir atļauts tikai viens Sudoku īskods."
 
-#: sudoku120publisher.php:133
+#: sudoku120publisher.php:192
 msgid "Tutorial Video"
 msgstr "Mācību video"
+
+#~ msgid ""
+#~ "Warning: cURL is not available on this server. IP address, User-Agent and "
+#~ "Referer forwarding will not work. WordPress fallback will be used instead"
+#~ msgstr ""
+#~ "Brīdinājums: cURL šajā serverī nav pieejams. IP adrese, lietotāja aģents "
+#~ "un atsauces pārsūtīšana nedarbosies. Tā vietā tiks izmantots WordPress "
+#~ "fallback"
+
+#~ msgid "Are you sure you want to delete this proxy?"
+#~ msgstr "Vai esat pārliecināts, ka vēlaties izdzēst šo proxy?"

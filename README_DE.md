@@ -18,6 +18,27 @@ Dank des Reverse-Proxys werden keine Anfragen vom Browser an fremde Server gesen
 
 Der Reverse-Proxy kann auch für andere Zwecke verwendet werden. Dabei werden jedoch keine URLs in den Rückgaben umgeschrieben und es werden in beiden Richtungen keine Cookies übertragen. Der Admin kann beliebige Reverse-Proxys anlegen und dabei einstellen, ob die User-IP, der User-Agent und/oder der Referer weitergeleitet werden sollen. Die Weitergabe der IP-Adresse wird zwar nicht empfohlen, aber es gibt auch Dienste, die dies benötigen.
 
+Es gibt aktivierbare Mime Type Filter im Reverse Proxy eingebaut, um die Sicherheit zu erhöhen:
+
+**json**: (application/json, application/x-json, application/ld+json)
+
+**xml**: (application/xml, application/rss+xml, application/atom+xml, application/xslt+xml)
+
+**txt**: (text/plain)
+
+**utf8**: (text/html, application/xhtml+xml, application/javascript, application/x-javascript, text/css, text/csv, application/vnd.ms-excel, application/x-yaml, text/yaml, text/markdown, application/x-httpd-php)
+
+**media**: (audio/mpeg, audio/wav, audio/x-wav, audio/ogg, audio/x-ogg, audio/flac, audio/mp4, audio/x-m4a, audio/aac,
+video/mp4, video/webm, video/quicktime, video/x-msvideo, video/x-matroska, video/3gpp, video/x-flv, video/mpeg, video/x-m4v,
+image/png, image/jpeg, image/pjpeg, image/gif, image/webp, image/svg+xml, image/bmp, image/avif, image/apng,
+image/tiff, image/x-tiff, image/vnd.microsoft.icon, image/x-icon)
+
+Bei json und xml wird die Antwort auf korrektes Format geprüft.
+Bei json, xml, txt und utf8 erfolgt eine Prüfung auf gültiges UTF-8 und Steuerzeichen.
+Alle Formate werden anhand ihres MIME-Typs überprüft.
+
+Der Reverse Proxy sendet außerdem standardmäßig die Header `X-Content-Type-Options: nosniff` und `X-Robots-Tag: noindex, nofollow`.
+
 Es stehen verschiedene Einstellungsmöglichkeiten für das Sudoku zur Verfügung. So kann der Benutzer zwischen verschiedenen vorgefertigten Designs oder einer eigenen Gestaltung wählen. Weiterhin können ausgehende Links mit zusätzlichen Sicherheitsmerkmalen versehen und in einem neuen Tab oder Browserfenster geöffnet werden. Das umgebende `div`-Element des Sudokus kann mit benutzerdefinierten CSS-Klassen, IDs oder direkten Style-Definitionen versehen werden.
 
 Ein ausführliches Tutorial-Video zum Setup des Plugins ist verfügbar unter: [YouTube Tutorial](https://www.youtube.com/watch?v=OAV-H_LYO2Y)

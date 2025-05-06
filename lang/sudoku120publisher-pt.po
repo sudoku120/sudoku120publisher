@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sudoku120publisher\n"
-"POT-Creation-Date: 2025-04-09 19:12+0200\n"
-"PO-Revision-Date: 2025-04-09 19:13+0200\n"
+"POT-Creation-Date: 2025-05-06 20:28+0200\n"
+"PO-Revision-Date: 2025-05-06 21:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -17,200 +17,245 @@ msgstr ""
 "X-Poedit-SearchPath-0: lang\n"
 "X-Poedit-SearchPath-1: .\n"
 
-#: functions.php:37 inc/admin/sudoku120publisher-proxy-urls.php:83
-#: inc/admin/sudoku120publisher-sudoku-list.php:52
-#: inc/admin/sudoku120publisher-sudoku-list.php:324
+#: functions.php:38 inc/admin/sudoku120publisher-proxy-urls.php:87
+#: inc/admin/sudoku120publisher-sudoku-list.php:56
+#: inc/admin/sudoku120publisher-sudoku-list.php:350
 msgid "Please enter a valid URL."
 msgstr "Introduz um URL válido."
 
-#: inc/admin/admin-menus.php:29
-msgid "Sudoku120 Publisher"
-msgstr "Sudoku120 Publisher"
+#: functions.php:276
+msgid "API URL is missing or invalid."
+msgstr "O URL da API está em falta ou é inválido."
 
-#: inc/admin/admin-menus.php:30
+#: functions.php:289
+msgid "Failed to parse API response."
+msgstr "Falha ao analisar a resposta da API."
+
+#: inc/admin/admin-menus.php:34
 msgid "Sudoku120"
 msgstr "Sudoku120"
 
-#: inc/admin/admin-menus.php:41 inc/admin/admin-menus.php:42
+#: inc/admin/admin-menus.php:41
+msgid "Sudoku120 Publisher"
+msgstr "Sudoku120 Publisher"
+
+#: inc/admin/admin-menus.php:53 inc/admin/admin-menus.php:54
 msgid "Settings"
 msgstr "Sudoku120 Configurações"
 
-#: inc/admin/admin-menus.php:51 inc/admin/admin-menus.php:52
+#: inc/admin/admin-menus.php:63 inc/admin/admin-menus.php:64
 msgid "Sudoku120 Proxy"
 msgstr "Sudoku120 Proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:34
-#: inc/admin/sudoku120publisher-proxy-urls.php:71
-#: inc/admin/sudoku120publisher-proxy-urls.php:116
+#: inc/admin/sudoku120publisher-proxy-urls.php:38
+#: inc/admin/sudoku120publisher-proxy-urls.php:75
+#: inc/admin/sudoku120publisher-proxy-urls.php:133
 msgid "Nonce verification failed. Please try again."
 msgstr "A verificação do nonce falhou. Tenta novamente."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:58
+#: inc/admin/sudoku120publisher-proxy-urls.php:62
 msgid "Proxy entry deleted."
 msgstr "Apagaste a entrada do proxy."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:60
+#: inc/admin/sudoku120publisher-proxy-urls.php:64
 msgid "Cannot delete proxy linked to a Sudoku."
 msgstr "Não podes apagar o proxy ligado a um Sudoku."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:64
+#: inc/admin/sudoku120publisher-proxy-urls.php:68
 msgid "Invalid request. Please try again."
 msgstr "Pedido inválido. Tenta novamente."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:106
+#: inc/admin/sudoku120publisher-proxy-urls.php:123
 msgid "Proxy entry updated."
 msgstr "Entrada de proxy actualizada."
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:142
-msgid ""
-"Warning: cURL is not available on this server. IP address, User-Agent and "
-"Referer forwarding will not work. WordPress fallback will be used instead"
-msgstr ""
-"Aviso: cURL não está disponível neste servidor. O encaminhamento de endereço "
-"IP, User-Agent e Referer não funcionará. Em vez disso, será utilizado o "
-"fallback do WordPress"
-
-#: inc/admin/sudoku120publisher-proxy-urls.php:147
+#: inc/admin/sudoku120publisher-proxy-urls.php:169
 msgid "Sudoku120 Proxy List"
 msgstr "Lista de proxies do Sudoku120"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:152
+#: inc/admin/sudoku120publisher-proxy-urls.php:174
 msgid "ID"
 msgstr "ID PROXY"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:153
+#: inc/admin/sudoku120publisher-proxy-urls.php:175
 msgid "Local URL"
 msgstr "URL local"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:154
+#: inc/admin/sudoku120publisher-proxy-urls.php:176
 msgid "Remote URL"
 msgstr "URL remoto"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:155
+#: inc/admin/sudoku120publisher-proxy-urls.php:177
 msgid "Client IP"
 msgstr "IP do cliente"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:156
+#: inc/admin/sudoku120publisher-proxy-urls.php:178
 msgid "User Agent"
 msgstr "Agente do utilizador"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:157
+#: inc/admin/sudoku120publisher-proxy-urls.php:179
 msgid "Referrer"
 msgstr "Referenciador"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:158
+#: inc/admin/sudoku120publisher-proxy-urls.php:180
+msgid "Filter"
+msgstr "Filtro"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:181
 msgid "Actions"
 msgstr "Acções"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:172
-#: inc/admin/sudoku120publisher-proxy-urls.php:261
-#: inc/admin/sudoku120publisher-sudoku-list.php:198
-#: inc/admin/sudoku120publisher-sudoku-list.php:216
+#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:332
+#: inc/admin/sudoku120publisher-sudoku-list.php:215
+#: inc/admin/sudoku120publisher-sudoku-list.php:233
+#: inc/admin/sudoku120publisher-sudoku-list.php:322
 msgid "Copy"
 msgstr "Copia"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:195
-#: inc/admin/sudoku120publisher-proxy-urls.php:196
-#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:220
+#: inc/admin/sudoku120publisher-proxy-urls.php:221
+#: inc/admin/sudoku120publisher-proxy-urls.php:222
 msgid "Yes"
 msgstr "Sim"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:195
-#: inc/admin/sudoku120publisher-proxy-urls.php:196
-#: inc/admin/sudoku120publisher-proxy-urls.php:197
+#: inc/admin/sudoku120publisher-proxy-urls.php:220
+#: inc/admin/sudoku120publisher-proxy-urls.php:221
+#: inc/admin/sudoku120publisher-proxy-urls.php:222
 msgid "No"
 msgstr "Não"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:200
+#: inc/admin/sudoku120publisher-proxy-urls.php:227
 msgid "Edit"
 msgstr "Editar"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:202
+#: inc/admin/sudoku120publisher-proxy-urls.php:230
 msgid "Delete"
 msgstr "Apagar"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:208
+#: inc/admin/sudoku120publisher-proxy-urls.php:236
 #, php-format
 msgid "Sudoku id=%s"
 msgstr "Sudoku id=%s"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:224
+#: inc/admin/sudoku120publisher-proxy-urls.php:253
 msgid "Edit Proxy"
 msgstr "Editar Proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:228
+#: inc/admin/sudoku120publisher-proxy-urls.php:257
 msgid "URL:"
 msgstr "URL:"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:229
-#: inc/admin/sudoku120publisher-proxy-urls.php:243
+#: inc/admin/sudoku120publisher-proxy-urls.php:258
+#: inc/admin/sudoku120publisher-proxy-urls.php:280
 msgid "Forward Client IP"
 msgstr "Encaminha o IP do cliente"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:230
-#: inc/admin/sudoku120publisher-proxy-urls.php:244
+#: inc/admin/sudoku120publisher-proxy-urls.php:259
+#: inc/admin/sudoku120publisher-proxy-urls.php:281
 msgid "Forward User Agent"
 msgstr "Encaminha o agente do utilizador"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:231
-#: inc/admin/sudoku120publisher-proxy-urls.php:245
+#: inc/admin/sudoku120publisher-proxy-urls.php:260
+#: inc/admin/sudoku120publisher-proxy-urls.php:282
 msgid "Forward Referrer"
 msgstr "Encaminha o Referenciador"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:232
-#: inc/admin/sudoku120publisher-settings.php:165
+#: inc/admin/sudoku120publisher-proxy-urls.php:263
+#: inc/admin/sudoku120publisher-proxy-urls.php:285
+msgid "Mimetype Filter"
+msgstr "Filtro de tipo MIME"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:264
+#: inc/admin/sudoku120publisher-proxy-urls.php:289
+msgid "json: (json, x-json, ld+json)"
+msgstr "json: (json, x-json, ld+json)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:265
+#: inc/admin/sudoku120publisher-proxy-urls.php:290
+msgid "xml: (xml, rss+xml, atom+xml)"
+msgstr "xml: (xml, rss+xml, atom+xml)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:266
+#: inc/admin/sudoku120publisher-proxy-urls.php:291
+msgid "txt: Plain Text (.txt)"
+msgstr "txt: Texto simples (.txt)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:267
+#: inc/admin/sudoku120publisher-proxy-urls.php:292
+msgid "utf8: (HTML, CSS, JS, etc.)"
+msgstr "utf8: (HTML, CSS, JS, etc.)"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:268
+#: inc/admin/sudoku120publisher-proxy-urls.php:293
+msgid "media: Audio, Video, Image formats"
+msgstr "media: Formatos de áudio, vídeo, imagem"
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:270
+#: inc/admin/sudoku120publisher-settings.php:242
 msgid "Save Changes"
 msgstr "Guardar alterações"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:234
+#: inc/admin/sudoku120publisher-proxy-urls.php:271
 msgid "Cancel"
 msgstr "Cancela"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:239
+#: inc/admin/sudoku120publisher-proxy-urls.php:276
 msgid "Add New Proxy"
 msgstr "Adiciona um novo proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:242
+#: inc/admin/sudoku120publisher-proxy-urls.php:279
 msgid "Remote URL:"
 msgstr "URL remoto:"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:246
+#: inc/admin/sudoku120publisher-proxy-urls.php:287
+msgid ""
+"Select which types of responses are allowed through the proxy. If no types "
+"are selected, all content types are allowed by default."
+msgstr ""
+"Selecione quais tipos de respostas são permitidos através do proxy. Se "
+"nenhum tipo for selecionado, todos os tipos de conteúdo são permitidos por "
+"padrão."
+
+#: inc/admin/sudoku120publisher-proxy-urls.php:296
 msgid "Add Proxy"
 msgstr "Adiciona Proxy"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:259
+#: inc/admin/sudoku120publisher-proxy-urls.php:333
+#: inc/admin/sudoku120publisher-sudoku-list.php:323
 msgid "Copied!"
 msgstr "Copiaste!"
 
-#: inc/admin/sudoku120publisher-proxy-urls.php:270
-msgid "Are you sure you want to delete this proxy?"
-msgstr "Tens a certeza que queres apagar este proxy?"
+#: inc/admin/sudoku120publisher-proxy-urls.php:334
+#: inc/admin/sudoku120publisher-sudoku-list.php:324
+msgid "Are you sure you want to delete this Sudoku?"
+msgstr "Tens a certeza de que queres eliminar este Sudoku?"
 
-#: inc/admin/sudoku120publisher-settings.php:101
+#: inc/admin/sudoku120publisher-settings.php:178
 msgid "None"
 msgstr "Não tens"
 
-#: inc/admin/sudoku120publisher-settings.php:111
+#: inc/admin/sudoku120publisher-settings.php:188
 msgid "Sudoku120 Publisher Settings"
 msgstr "Definições do Sudoku120 Publisher"
 
-#: inc/admin/sudoku120publisher-settings.php:115
+#: inc/admin/sudoku120publisher-settings.php:192
 msgid "Reverse Proxy Settings"
 msgstr "Definições de proxy invertido"
 
-#: inc/admin/sudoku120publisher-settings.php:118
+#: inc/admin/sudoku120publisher-settings.php:195
 msgid "Enable Reverse Proxy"
 msgstr "Ativar proxy invertido"
 
-#: inc/admin/sudoku120publisher-settings.php:120
+#: inc/admin/sudoku120publisher-settings.php:197
 msgid "Enable or disable the proxy feature."
 msgstr "Ativa ou desactiva a funcionalidade de proxy."
 
-#: inc/admin/sudoku120publisher-settings.php:122
+#: inc/admin/sudoku120publisher-settings.php:199
 msgid "Sudoku Design Settings"
 msgstr "Definições de design do Sudoku"
 
-#: inc/admin/sudoku120publisher-settings.php:130
+#: inc/admin/sudoku120publisher-settings.php:207
 msgid ""
 "Choose a CSS file for styling or select none. You can place your own design "
 "css in uploads/sudoku120publisher/designs/ and select it then here"
@@ -219,15 +264,15 @@ msgstr ""
 "o teu próprio css de design em uploads/sudoku120publisher/designs/ e "
 "seleccioná-lo aqui"
 
-#: inc/admin/sudoku120publisher-settings.php:132
+#: inc/admin/sudoku120publisher-settings.php:209
 msgid "Sudoku Container Attributes"
 msgstr "Atributos do contentor do Sudoku"
 
-#: inc/admin/sudoku120publisher-settings.php:142
+#: inc/admin/sudoku120publisher-settings.php:219
 msgid "Custom Attributes"
 msgstr "Atributos personalizados"
 
-#: inc/admin/sudoku120publisher-settings.php:149
+#: inc/admin/sudoku120publisher-settings.php:226
 msgid ""
 "Extra Attributes for the div around the sudoku, set id, classes or direct a "
 "style.."
@@ -235,23 +280,23 @@ msgstr ""
 "Atributos extra para a div à volta do sudoku, define id, classes ou dirige "
 "um estilo..."
 
-#: inc/admin/sudoku120publisher-settings.php:153
+#: inc/admin/sudoku120publisher-settings.php:230
 msgid "Outgoing Sudoku Link Settings"
 msgstr "Definições do link de Sudoku de saída"
 
-#: inc/admin/sudoku120publisher-settings.php:156
+#: inc/admin/sudoku120publisher-settings.php:233
 msgid "rel=\"noopener noreferrer\""
 msgstr "rel=\"noopener noreferrer”"
 
-#: inc/admin/sudoku120publisher-settings.php:158
+#: inc/admin/sudoku120publisher-settings.php:235
 msgid "rel=\"noopener noreferrer\" are security features for links"
 msgstr "rel=\"noopener noreferrer\" são caraterísticas de segurança para links"
 
-#: inc/admin/sudoku120publisher-settings.php:161
+#: inc/admin/sudoku120publisher-settings.php:238
 msgid "target=\"_blank\""
 msgstr "target=\"_blank”"
 
-#: inc/admin/sudoku120publisher-settings.php:163
+#: inc/admin/sudoku120publisher-settings.php:240
 msgid ""
 "target=\"_blank\" will open the Link in a new browser tab or window when you "
 "click it."
@@ -259,7 +304,7 @@ msgstr ""
 "target=\"_blank\" abrirá o link num novo separador ou janela do browser "
 "quando clicares nele."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:40
+#: inc/admin/sudoku120publisher-sudoku-list.php:44
 msgid ""
 "Please enter a valid API Key in UUID format (xxxxxxxx-xxxx-xxxx-xxxx-"
 "xxxxxxxxxxxx)."
@@ -267,116 +312,120 @@ msgstr ""
 "Introduz uma chave de API válida no formato UUID (xxxxxxxx-xxxx-xxxx-xxxx-"
 "xxxx-xxxxxxxxxxxxxx)."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:59
+#: inc/admin/sudoku120publisher-sudoku-list.php:63
 msgid "Please provide either an API Key or a Proxy URL."
 msgstr "Fornece uma chave de API ou um URL de proxy."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:68
+#: inc/admin/sudoku120publisher-sudoku-list.php:72
 msgid "New Sudoku created successfully."
 msgstr "Novo Sudoku criado com sucesso."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:79
-#: inc/admin/sudoku120publisher-sudoku-list.php:94
+#: inc/admin/sudoku120publisher-sudoku-list.php:83
+#: inc/admin/sudoku120publisher-sudoku-list.php:98
 msgid "Invalid request, please try again."
 msgstr "Pedido inválido, tenta novamente."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:81
-#: inc/admin/sudoku120publisher-sudoku-list.php:96
+#: inc/admin/sudoku120publisher-sudoku-list.php:85
+#: inc/admin/sudoku120publisher-sudoku-list.php:100
 msgid "You do not have permission to perform this action."
 msgstr "Não tens permissão para executar esta ação."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:84
+#: inc/admin/sudoku120publisher-sudoku-list.php:88
 msgid "API data updated successfully."
 msgstr "Dados da API actualizados com sucesso."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:124
+#: inc/admin/sudoku120publisher-sudoku-list.php:128
 msgid "Sudoku deleted successfully."
 msgstr "Sudoku eliminado com sucesso."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:134
+#: inc/admin/sudoku120publisher-sudoku-list.php:138
 msgid "Sudoku120 Publisher - Sudoku Management"
 msgstr "Sudoku120 Publisher - Gestão de Sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:145
+#: inc/admin/sudoku120publisher-sudoku-list.php:149
 msgid "Approved"
 msgstr "Aprovado"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:147
+#: inc/admin/sudoku120publisher-sudoku-list.php:151
 msgid "Pending"
 msgstr "Pendente"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:149
+#: inc/admin/sudoku120publisher-sudoku-list.php:153
 msgid "Rejected"
 msgstr "Rejeitado"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:151
+#: inc/admin/sudoku120publisher-sudoku-list.php:155
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:156
+#: inc/admin/sudoku120publisher-sudoku-list.php:173
 msgid "Sudokus"
 msgstr "Sudokus"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:169
+#: inc/admin/sudoku120publisher-sudoku-list.php:186
 msgid "Active"
 msgstr "Ativo"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:171
+#: inc/admin/sudoku120publisher-sudoku-list.php:188
 msgid "Configuration"
 msgstr "Configuração"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:173
+#: inc/admin/sudoku120publisher-sudoku-list.php:190
 msgid "Inactive"
 msgstr "Inativo"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:175
+#: inc/admin/sudoku120publisher-sudoku-list.php:192
 msgid "Problem"
 msgstr "Problema"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:194
+#: inc/admin/sudoku120publisher-sudoku-list.php:211
 msgid "API URL:"
 msgstr "URL DA API:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:202
+#: inc/admin/sudoku120publisher-sudoku-list.php:219
 #, php-format
 msgid "Copy the API URL and enter it on %s"
 msgstr "Copia o URL da API e introduz-o em %s"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:206
+#: inc/admin/sudoku120publisher-sudoku-list.php:223
 msgid "Use now the shortcode in a page or post"
 msgstr "Usa agora o shortcode numa página ou numa publicação"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:213
+#: inc/admin/sudoku120publisher-sudoku-list.php:230
 msgid "Sudoku URL:"
 msgstr "URL do Sudoku:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:220
+#: inc/admin/sudoku120publisher-sudoku-list.php:237
 #, php-format
 msgid "Copy the Sudoku URL and enter it on %s"
 msgstr "Copia o URL do Sudoku e insere-o em %s"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:232
+#: inc/admin/sudoku120publisher-sudoku-list.php:246
+msgid "Update API Data"
+msgstr "Atualizar dados da API"
+
+#: inc/admin/sudoku120publisher-sudoku-list.php:249
 msgid "Delete Sudoku"
 msgstr "Elimina o Sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:237
+#: inc/admin/sudoku120publisher-sudoku-list.php:254
 msgid "Shortcode:"
 msgstr "Código curto:"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:237
+#: inc/admin/sudoku120publisher-sudoku-list.php:254
 msgid "replace the x with the id of the Sudoku."
 msgstr "substitui o x pelo id do Sudoku."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:240
+#: inc/admin/sudoku120publisher-sudoku-list.php:257
 msgid "Add New Sudoku"
 msgstr "Adiciona um novo Sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:244
+#: inc/admin/sudoku120publisher-sudoku-list.php:261
 #, php-format
 msgid "Login on %s and create a sudoku there"
 msgstr "Inicia sessão em %s e cria um sudoku aí"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:247
+#: inc/admin/sudoku120publisher-sudoku-list.php:264
 msgid ""
 "When the reverse proxy function is enabled you can enter the API Token to "
 "create the proxy url."
@@ -384,7 +433,7 @@ msgstr ""
 "Quando a função de proxy invertido está activada, podes introduzir o Token "
 "da API para criar o url do proxy."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:248
+#: inc/admin/sudoku120publisher-sudoku-list.php:265
 msgid ""
 "Or create a reverse proxy in the webserver config and enter the url as Proxy "
 "URL."
@@ -392,71 +441,59 @@ msgstr ""
 "Ou cria um proxy invertido na configuração do servidor Web e introduz o URL "
 "como URL do proxy."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:249
+#: inc/admin/sudoku120publisher-sudoku-list.php:266
 msgid ""
 "Update the API Data after every setup step, to get the actual status here."
 msgstr ""
 "Actualiza os dados da API após cada passo de configuração, para obteres o "
 "estado atual aqui."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:255
+#: inc/admin/sudoku120publisher-sudoku-list.php:272
 msgid "API Token"
 msgstr "Token da API"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:262
+#: inc/admin/sudoku120publisher-sudoku-list.php:279
 msgid "Proxy URL"
 msgstr "URL do proxy"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:269
+#: inc/admin/sudoku120publisher-sudoku-list.php:286
 msgid "Create Sudoku"
 msgstr "Criar Sudoku"
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:293
-msgid "Are you sure you want to delete this Sudoku?"
-msgstr "Tens a certeza de que queres eliminar este Sudoku?"
-
-#: inc/admin/sudoku120publisher-sudoku-list.php:342
+#: inc/admin/sudoku120publisher-sudoku-list.php:368
 msgid "Failed to create Sudoku entry."
 msgstr "Falha ao criar a entrada do Sudoku."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:362
+#: inc/admin/sudoku120publisher-sudoku-list.php:395
 msgid "No proxy found for the Sudoku."
 msgstr "Não encontraste um proxy para o Sudoku."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:417
+#: inc/admin/sudoku120publisher-sudoku-list.php:450
 msgid "Invalid Sudoku ID or missing API URL."
 msgstr "ID de Sudoku inválido ou URL de API em falta."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:438
+#: inc/admin/sudoku120publisher-sudoku-list.php:471
 #, php-format
 msgid "Failed to fetch Sudoku HTML (HTTP %d)."
 msgstr "Falha ao obter o Sudoku HTML (HTTP %d)."
 
-#: inc/admin/sudoku120publisher-sudoku-list.php:490
-msgid "API URL is missing or invalid."
-msgstr "O URL da API está em falta ou é inválido."
-
-#: inc/admin/sudoku120publisher-sudoku-list.php:503
-msgid "Failed to parse API response."
-msgstr "Falha ao analisar a resposta da API."
-
-#: inc/class-sudoku120publisher-activate.php:141
+#: inc/class-sudoku120publisher-activate.php:104
 msgid "Error during plugin activation: "
 msgstr "Erro durante a ativação do plugin:"
 
-#: inc/class-sudoku120publisher-activate.php:192
+#: inc/class-sudoku120publisher-activate.php:155
 msgid "Error when manually triggering the process: "
 msgstr "Erro ao ativar manualmente o processo:"
 
-#: inc/reverse-proxy.php:32
+#: inc/reverse-proxy.php:86
 msgid "Proxy is disabled."
 msgstr "O proxy está desativado."
 
-#: inc/reverse-proxy.php:51
+#: inc/reverse-proxy.php:101
 msgid "Invalid proxy UUID."
 msgstr "UUID de proxy inválido."
 
-#: inc/reverse-proxy.php:120
+#: inc/reverse-proxy.php:151
 msgid "Failed to fetch remote content."
 msgstr "Falha ao buscar conteúdo remoto."
 
@@ -477,6 +514,17 @@ msgstr "Erro: Este Sudoku só pode ser apresentado em %s."
 msgid "Error: Only one Sudoku shortcode is allowed per page."
 msgstr "Erro: Só é permitido um shortcode de Sudoku por página."
 
-#: sudoku120publisher.php:133
+#: sudoku120publisher.php:192
 msgid "Tutorial Video"
 msgstr "Vídeo tutorial"
+
+#~ msgid ""
+#~ "Warning: cURL is not available on this server. IP address, User-Agent and "
+#~ "Referer forwarding will not work. WordPress fallback will be used instead"
+#~ msgstr ""
+#~ "Aviso: cURL não está disponível neste servidor. O encaminhamento de "
+#~ "endereço IP, User-Agent e Referer não funcionará. Em vez disso, será "
+#~ "utilizado o fallback do WordPress"
+
+#~ msgid "Are you sure you want to delete this proxy?"
+#~ msgstr "Tens a certeza que queres apagar este proxy?"

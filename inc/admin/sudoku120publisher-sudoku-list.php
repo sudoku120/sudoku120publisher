@@ -156,7 +156,20 @@ function sudoku120publisher_sudoku_list_page() {
 	}
 	?>
 </span></h2>
+	<?php
+	$message_json = get_option( 'sudoku120publisher_admin_sudoku_message', '' );
 
+	if ( ! empty( $message_json ) ) {
+
+		$messages = json_decode( $message_json, true );
+
+		$messagetext = $messages[ substr( get_user_locale(), 0, 2 ) ] ?? $messages['en'] ?? '';
+
+		if ( ! empty( $messagetext ) ) {
+			echo '<div class="notice notice-info"><p><strong>' . esc_html( $messagetext ) . '</strong></p></div>';
+		}
+	}
+	?>
 			<h2><?php esc_html_e( 'Sudokus', 'sudoku120publisher' ); ?></h2>
 		<div class="sudoku-list">
 			<?php foreach ( $sudokus as $sudoku ) : ?>
@@ -358,7 +371,14 @@ function sudoku120publisher_create_sudoku( $api_key = null, $proxy_url = null ) 
 	// When api key is given, create remote url and write it into proxy db.
 	if ( ! empty( $api_key ) ) {
 		$remote_api_url = SUDOKU120PUBLISHER_API_URL . $api_key . '/';
-		$proxy_id       = sudoku120publisher_insert_proxy_url( $remote_api_url, $sudoku_id );
+		$proxy_id       = sudoku120publisher_insert_proxy_url(
+			$remote_api_url,
+			$sudoku_id,
+			false,         // $client_ip
+			false,         // $user_agent
+			true,          // $referrer
+			wp_json_encode( array( 'json', 'txt' ) ) // $mimetype_groups_json
+		);
 		if ( is_wp_error( $proxy_id ) ) {
 			return $proxy_id;
 		} else {
@@ -376,7 +396,7 @@ function sudoku120publisher_create_sudoku( $api_key = null, $proxy_url = null ) 
 			}
 
 			// generate local proxy url for the remote api.
-			$local_proxy_url = esc_url(home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' ));
+			$local_proxy_url = esc_url( home_url( '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' . $proxy->proxy_uuid . '/' ) );
 
 			// Update remote proxy url for the sudoku.
 			$wpdb->update(
@@ -430,7 +450,7 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 		return new WP_Error( 'missing_data', __( 'Invalid Sudoku ID or missing API URL.', 'sudoku120publisher' ) );
 	}
 
-	$sudoku_api_url = esc_url_raw(rtrim( $sudoku->apiurl, '/' ) . '/sudoku.txt');
+	$sudoku_api_url = esc_url_raw( rtrim( $sudoku->apiurl, '/' ) . '/sudoku.txt' );
 
 	// Get Sudoku HTML from remote Api.
 	$response = wp_remote_get(
@@ -469,24 +489,77 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 	$html    = str_replace( $search, $replace, $html );
 
 	$allowed_html = array(
-		'div'     => array('id' => true, 'class' => true, 'style' => true),
-		'span'    => array('id' => true, 'class' => true, 'style' => true),
-		'form'    => array('name' => true, 'method' => true, 'action' => true, 'id' => true, 'class' => true),
-		'select'  => array('name' => true, 'id' => true, 'class' => true),
-		'option'  => array('value' => true, 'selected' => true),
-		'input'   => array('type' => true, 'name' => true, 'value' => true, 'id' => true, 'class' => true, 'style' => true),
-		'button'  => array('type' => true, 'id' => true, 'class' => true, 'style' => true),
-		'link'    => array('href' => true, 'rel' => true, 'type' => true, 'media' => true),
-		'style'   => array('type' => true, 'media' => true),
-		'template'=> array('shadowrootmode' => true),
-		'img'     => array('src' => true, 'alt' => true, 'width' => true, 'height' => true, 'style' => true),
-		'a'       => array('href' => true, 'rel' => true, 'target' => true),
-		'h3'      => array(),
-		'p'       => array(),
-		'br'      => array(),
-		'script'  => array('type' => true, 'src' => true),
+		'div'      => array(
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'span'     => array(
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'form'     => array(
+			'name'   => true,
+			'method' => true,
+			'action' => true,
+			'id'     => true,
+			'class'  => true,
+		),
+		'select'   => array(
+			'name'  => true,
+			'id'    => true,
+			'class' => true,
+		),
+		'option'   => array(
+			'value'    => true,
+			'selected' => true,
+		),
+		'input'    => array(
+			'type'  => true,
+			'name'  => true,
+			'value' => true,
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'button'   => array(
+			'type'  => true,
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'link'     => array(
+			'href'  => true,
+			'rel'   => true,
+			'type'  => true,
+			'media' => true,
+		),
+		'style'    => array(
+			'type'  => true,
+			'media' => true,
+		),
+		'template' => array( 'shadowrootmode' => true ),
+		'img'      => array(
+			'src'    => true,
+			'alt'    => true,
+			'width'  => true,
+			'height' => true,
+			'style'  => true,
+		),
+		'a'        => array(
+			'href'   => true,
+			'rel'    => true,
+			'target' => true,
+		),
+		'h3'       => array(),
+		'p'        => array(),
+		'br'       => array(),
+		'script'   => array(
+			'type' => true,
+			'src'  => true,
+		),
 	);
-
 
 	// The $html may contain JSON fragments with escaped closing tags (e.g., '<\/h3>', '<\/p>').
 	// WordPress's wp_kses() sanitization would strip these escaped tags, breaking the JSON structure.
@@ -494,16 +567,16 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 	// before passing the content to wp_kses(). After sanitization, we re-escape the tags to restore
 	// the original JSON-compatible format.
 	$html = str_replace(
-			['<\/h3>', '<\/p>'],
-			['</h3>', '</p>'],
-			$html
+		array( '<\/h3>', '<\/p>' ),
+		array( '</h3>', '</p>' ),
+		$html
 	);
 
 	$html = str_replace(
-		['</h3>', '</p>'],
-			['<\/h3>', '<\/p>'],
-			 wp_kses( $html , $allowed_html )
-		 );
+		array( '</h3>', '</p>' ),
+		array( '<\/h3>', '<\/p>' ),
+		wp_kses( $html, $allowed_html )
+	);
 
 	// Save sudoku HTML into the db.
 	$wpdb->update(
@@ -513,85 +586,6 @@ function sudoku120publisher_fetch_sudoku_html( $sudoku_id ) {
 		array( '%s' ),
 		array( '%d' )
 	);
-
-	return true;
-}
-
-/**
- * Updates the Sudoku entry in the database with data fetched from the remote API.
- *
- * This function:
- * - Retrieves the existing Sudoku entry and its API URL from the database.
- * - Sends a request to the API to fetch updated data for the Sudoku.
- * - Decodes the API response and updates the database entry with relevant data, such as name, language, timezone, and status.
- * - If the `sudoku_content` is missing, it triggers the fetching of the Sudoku HTML from the API.
- * - Updates the domain and domain status options based on the API response.
- *
- * @param int $sudoku_id The ID of the Sudoku entry to update.
- *
- * @return bool|WP_Error True on success, or a WP_Error object on failure.
- */
-function sudoku120publisher_update_sudoku_from_api( $sudoku_id ) {
-	global $wpdb;
-
-	$sudoku = $wpdb->get_row( $wpdb->prepare( 'SELECT apiurl, sudoku_content FROM ' . esc_sql( SUDOKU120PUBLISHER_TABLE_SUDOKU ) . ' WHERE id = %d', $sudoku_id ) );
-
-	if ( ! $sudoku || empty( $sudoku->apiurl ) ) {
-		return new WP_Error( 'missing_apiurl', __( 'API URL is missing or invalid.', 'sudoku120publisher' ) );
-	}
-
-	$response = wp_remote_get( $sudoku->apiurl );
-
-	if ( is_wp_error( $response ) ) {
-		return $response;
-	}
-
-	$body = wp_remote_retrieve_body( $response );
-	$data = json_decode( $body, true );
-
-	if ( json_last_error() !== JSON_ERROR_NONE ) {
-		return new WP_Error( 'json_decode_error', __( 'Failed to parse API response.', 'sudoku120publisher' ) );
-	}
-
-	// Prepare update data.
-	$update_data = array(
-		'name'     => isset($data['name']) ? sanitize_text_field( $data['name'] ) : null,
-'lang'     => isset($data['lang']) ? sanitize_text_field( $data['lang'] ) : null,
-'timezone' => isset($data['timezone']) ? sanitize_text_field( $data['timezone'] ) : null,
-'status'   => isset($data['status']) ? sanitize_text_field( $data['status'] ) : null,
-
-	);
-
-	// Only update if the values are not empty.
-	if ( ! empty( $data['sudokuurl'] ) && wp_http_validate_url( $data['sudokuurl'] ) ) {
-    $update_data['sudokuurl'] = esc_url_raw( $data['sudokuurl'] );
-}
-if ( ! empty( $data['apiurl'] ) && wp_http_validate_url( $data['apiurl'] ) ) {
-    $update_data['apiurl'] = esc_url_raw( $data['apiurl'] );
-}
-
-	// Update database entries.
-	$wpdb->update(
-		SUDOKU120PUBLISHER_TABLE_SUDOKU,
-		$update_data,
-		array( 'id' => $sudoku_id ),
-		array_fill( 0, count( $update_data ), '%s' ),
-		array( '%d' )
-	);
-
-	// Get Sudoku HTML when available and still empty in db.
-	if ( ! empty( $data['apiurl'] ) && empty( $sudoku->sudoku_content ) ) {
-		sudoku120publisher_fetch_sudoku_html( $sudoku_id );
-	}
-
-	// Update global domain options.
-if ( isset( $data['domain'] ) ) {
-	update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN, sanitize_text_field( $data['domain'] ) );
-}
-if ( isset( $data['domainstatus'] ) ) {
-	update_option( SUDOKU120PUBLISHER_OPTION_DOMAIN_STATUS, sanitize_text_field( $data['domainstatus'] ) );
-}
-
 
 	return true;
 }

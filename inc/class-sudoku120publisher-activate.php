@@ -23,7 +23,7 @@ class Sudoku120Publisher_Activate {
 	 */
 	public static function activate() {
 		// Create necessary database tables for the plugin.
-		self::create_tables();
+		sudoku120publisher_create_tables();
 
 		// download files and copy them into uploads.
 		self::check_and_activate_files();
@@ -32,50 +32,6 @@ class Sudoku120Publisher_Activate {
 		self::check_and_add_plugin_options();
 	}
 
-	/**
-	 * Creates the database tables needed for the plugin to function.
-	 */
-	private static function create_tables() {
-		global $wpdb;
-		$charset_collate = $wpdb->get_charset_collate();
-		// Create Sudoku table.
-		$create_sudoku_table = '
-        CREATE TABLE ' . SUDOKU120PUBLISHER_TABLE_SUDOKU . " (
-            id INT(11) NOT NULL AUTO_INCREMENT,
-            name VARCHAR(255) DEFAULT NULL,
-            lang VARCHAR(10) DEFAULT NULL,
-            api_key VARCHAR(255) DEFAULT NULL,
-            timezone VARCHAR(100) DEFAULT NULL,
-            sudokuurl TEXT DEFAULT NULL,
-            status ENUM('active', 'inactive', 'config', 'problem') DEFAULT NULL,
-            apiurl TEXT DEFAULT NULL,
-            sudoku_content TEXT DEFAULT NULL,
-            PRIMARY KEY (id)
-        ) $charset_collate;
-        ";
-
-		// Create Proxy table.
-		$create_proxy_table = '
-        CREATE TABLE ' . SUDOKU120PUBLISHER_TABLE_PROXY . " (
-            id INT(11) NOT NULL AUTO_INCREMENT,
-            url TEXT NOT NULL,
-            proxy_uuid VARCHAR(36) NOT NULL,
-            sudoku_id INT(11) DEFAULT NULL,
-            client_ip BOOLEAN DEFAULT FALSE,
-            user_agent BOOLEAN DEFAULT FALSE,
-            referrer BOOLEAN DEFAULT TRUE,
-            PRIMARY KEY (id),
-            UNIQUE KEY proxy_uuid_unique (proxy_uuid)
-        ) $charset_collate;
-        ";
-
-		// Include the upgrade functions for dbDelta.
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-
-		// Call dbDelta() to create or update tables.
-		dbDelta( $create_sudoku_table );
-		dbDelta( $create_proxy_table );
-	}
 
 
 
@@ -114,6 +70,13 @@ class Sudoku120Publisher_Activate {
 			// Check if the 'sudoku div attr' option is set. If not, set it with an empty value.
 		if ( ! get_option( SUDOKU120PUBLISHER_OPTION_SUDOKU_DIV_ATTR ) ) {
 			update_option( SUDOKU120PUBLISHER_OPTION_SUDOKU_DIV_ATTR, SUDOKU120PUBLISHER_OPTION_SUDOKU_DIV_DEFAULT ); // Default.
+		}
+
+		if ( get_option( 'sudoku120publisher_admin_alert_sudoku' ) === false ) {
+				add_option( 'sudoku120publisher_admin_alert_sudoku', 0 );
+		}
+		if ( get_option( 'sudoku120publisher_admin_alert_message' ) === false ) {
+			add_option( 'sudoku120publisher_admin_alert_message', 0 );
 		}
 
 		update_option( 'sudoku120publisher_plugin_active', '1' );

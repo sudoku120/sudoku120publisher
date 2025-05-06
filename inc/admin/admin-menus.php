@@ -24,10 +24,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function sudoku120publisher_menu() {
+
+	// Get alert counts.
+		$alert_sudoku  = (int) get_option( 'sudoku120publisher_admin_alert_sudoku', 0 );
+		$alert_message = (int) get_option( 'sudoku120publisher_admin_alert_message', 0 );
+		$total_alerts  = $alert_sudoku + $alert_message;
+
+		// Build menu title with optional badge.
+		$menu_title = esc_html__( 'Sudoku120', 'sudoku120publisher' );
+	if ( $total_alerts > 0 ) {
+		$menu_title .= ' <span class="update-plugins count-' . $total_alerts . '"><span class="plugin-count">' . $total_alerts . '</span></span>';
+	}
+
 	// Main menu for the Sudoku list.
 	add_menu_page(
 		esc_html__( 'Sudoku120 Publisher', 'sudoku120publisher' ),
-		esc_html__( 'Sudoku120', 'sudoku120publisher' ),
+		$menu_title,
 		'manage_options',
 		'sudoku120publisher',
 		'sudoku120publisher_sudoku_list_page',

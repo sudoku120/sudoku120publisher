@@ -3,7 +3,7 @@
 Plugin Name: Sudoku120 Publisher
 Plugin URI: https://github.com/sudoku120/sudoku120publisher
 Description: Plugin to integrate the Sudoku120.com webmaster Sudoku in WordPress
-Version: 1.0.2
+Version: 1.0.3
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -91,6 +91,32 @@ class Sudoku120Publisher {
 				}
 			}
 		);
+
+		if (
+				get_option( 'sudoku120publisher_plugin_active' ) === '1' &&
+				get_option( SUDOKU120PUBLISHER_OPTION_PROXY_ACTIVE ) === '1'
+			) {
+				add_filter(
+					'redirect_canonical',
+					function ( $redirect_url, $requested_url ) {
+						$path = wp_parse_url( $requested_url, PHP_URL_PATH );
+						if ( strpos( $path, '/' . SUDOKU120PUBLISHER_PROXY_SLUG . '/' ) === 0 ) {
+								return false;
+						}
+
+						return $redirect_url;
+					},
+					10,
+					2
+				);
+
+		}
+
+		if ( ! wp_next_scheduled( 'sudoku120publisher_daily_check' ) ) {
+			wp_schedule_event( time(), 'daily', 'sudoku120publisher_daily_check' );
+		}
+
+		add_action( 'sudoku120publisher_daily_check', 'sudoku120publisher_cron_check_sudokus' );
 	}
 
 	/**
@@ -106,16 +132,30 @@ class Sudoku120Publisher {
 	}
 
 	/**
-	 * Get the plugin version from the plugin metadata and store it in a constant.
-	 * This constant is used in wp_enqueue_* functions to append the correct version to script/style URLs.
+	 * Get the plugin version from the plugin metadata, check if an update is needed,
+	 * and store the version in a constant. If an update is detected, necessary actions
+	 * like database updates or table modifications are performed.
+	 * The constant is used in wp_enqueue_* functions to append the correct version
+	 * to script/style URLs.
 	 */
 	public function set_version_const() {
+		if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$plugin_data     = get_plugin_data( __FILE__ );
+		$current_version = $plugin_data['Version'];
+
+		$old_version = get_option( 'sudoku120publisher_version' );
+
+		if ( ! $old_version || $current_version !== $old_version ) {
+			update_option( 'sudoku120publisher_version', $current_version );
+			sudoku120publisher_create_tables();
+
+		}
+
 		if ( ! defined( 'SUDOKU120PUBLISHER_VERSION' ) ) {
-			if ( ! function_exists( 'get_plugin_data' ) ) {
-					require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
-						$plugin_data = get_plugin_data( __FILE__ );
-						define( 'SUDOKU120PUBLISHER_VERSION', $plugin_data['Version'] );
+			define( 'SUDOKU120PUBLISHER_VERSION', $current_version );
 		}
 	}
 

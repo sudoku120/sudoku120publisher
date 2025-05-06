@@ -18,6 +18,27 @@ Thanks to the reverse proxy, no requests are sent to external servers from the b
 
 The reverse proxy can also be used for other purposes. However, no URLs are rewritten in the returned data, and no cookies are forwarded in both directions. The admin can create custom reverse proxies and configure whether the user IP, user agent, and/or referer should be forwarded. While it is not recommended to forward the IP address, some services require it.
 
+There are optional response filters to the reverse proxy to improve security:
+
+**json**: (application/json, application/x-json, application/ld+json)
+
+**xml**: (application/xml, application/rss+xml, application/atom+xml, application/xslt+xml)
+
+**txt**: (text/plain)
+
+**utf8**: (text/html, application/xhtml+xml, application/javascript, application/x-javascript, text/css, text/csv, application/vnd.ms-excel, application/x-yaml, text/yaml, text/markdown, application/x-httpd-php)
+
+**media**: (audio/mpeg, audio/wav, audio/x-wav, audio/ogg, audio/x-ogg, audio/flac, audio/mp4, audio/x-m4a, audio/aac,
+video/mp4, video/webm, video/quicktime, video/x-msvideo, video/x-matroska, video/3gpp, video/x-flv, video/mpeg, video/x-m4v,
+image/png, image/jpeg, image/pjpeg, image/gif, image/webp, image/svg+xml, image/bmp, image/avif, image/apng,
+image/tiff, image/x-tiff, image/vnd.microsoft.icon, image/x-icon)
+
+For json and xml, the response is validated for correct structure.
+For json, xml, txt, and utf8 types, the response is checked for valid UTF-8 and control characters.
+All types are validated by MIME type.
+
+The reverse proxy also sends the `X-Content-Type-Options: nosniff` and `X-Robots-Tag: noindex, nofollow` headers by default.
+
 There are various configuration options available for the Sudoku. The user can choose between pre-designed layouts or custom styling. Additionally, outgoing links can be enhanced with extra security features and opened in a new tab or window. The surrounding div element of the Sudoku can be customized with CSS classes, IDs, or direct style definitions.
 
 A detailed tutorial video for setting up the plugin is available at: [YouTube Tutorial](https://www.youtube.com/watch?v=OAV-H_LYO2Y)

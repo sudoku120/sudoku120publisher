@@ -116,7 +116,7 @@ function sudoku120publisher_render_shortcode( $atts ) {
 			// Enqueue the design CSS file with versioning.
 			wp_enqueue_style(
 				'sudoku120publisher-design', // Handle for the style.
-				esc_url( $upload_dir['baseurl'] . '/sudoku120publisher/designs/' .  $design_css  ), // Secure the URL.
+				esc_url( $upload_dir['baseurl'] . '/sudoku120publisher/designs/' . $design_css ), // Secure the URL.
 				array(), // No dependencies.
 				$version // Version based on file modification time.
 			);
@@ -124,24 +124,77 @@ function sudoku120publisher_render_shortcode( $atts ) {
 	}
 
 	$allowed_html = array(
-    'div'     => array('id' => true, 'class' => true, 'style' => true),
-    'span'    => array('id' => true, 'class' => true, 'style' => true),
-    'form'    => array('name' => true, 'method' => true, 'action' => true, 'id' => true, 'class' => true),
-    'select'  => array('name' => true, 'id' => true, 'class' => true),
-    'option'  => array('value' => true, 'selected' => true),
-    'input'   => array('type' => true, 'name' => true, 'value' => true, 'id' => true, 'class' => true, 'style' => true),
-    'button'  => array('type' => true, 'id' => true, 'class' => true, 'style' => true),
-    'link'    => array('href' => true, 'rel' => true, 'type' => true, 'media' => true),
-    'style'   => array('type' => true, 'media' => true),
-    'template'=> array('shadowrootmode' => true),
-    'img'     => array('src' => true, 'alt' => true, 'width' => true, 'height' => true, 'style' => true),
-    'a'       => array('href' => true, 'rel' => true, 'target' => true),
-    'h3'      => array(),
-    'p'       => array(),
-    'br'      => array(),
-    'script'  => array('type' => true, 'src' => true),
-);
-
+		'div'      => array(
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'span'     => array(
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'form'     => array(
+			'name'   => true,
+			'method' => true,
+			'action' => true,
+			'id'     => true,
+			'class'  => true,
+		),
+		'select'   => array(
+			'name'  => true,
+			'id'    => true,
+			'class' => true,
+		),
+		'option'   => array(
+			'value'    => true,
+			'selected' => true,
+		),
+		'input'    => array(
+			'type'  => true,
+			'name'  => true,
+			'value' => true,
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'button'   => array(
+			'type'  => true,
+			'id'    => true,
+			'class' => true,
+			'style' => true,
+		),
+		'link'     => array(
+			'href'  => true,
+			'rel'   => true,
+			'type'  => true,
+			'media' => true,
+		),
+		'style'    => array(
+			'type'  => true,
+			'media' => true,
+		),
+		'template' => array( 'shadowrootmode' => true ),
+		'img'      => array(
+			'src'    => true,
+			'alt'    => true,
+			'width'  => true,
+			'height' => true,
+			'style'  => true,
+		),
+		'a'        => array(
+			'href'   => true,
+			'rel'    => true,
+			'target' => true,
+		),
+		'h3'       => array(),
+		'p'        => array(),
+		'br'       => array(),
+		'script'   => array(
+			'type' => true,
+			'src'  => true,
+		),
+	);
 
 	// The $sudoku_content may contain JSON fragments with escaped closing tags (e.g., '<\/h3>', '<\/p>').
 	// WordPress's wp_kses() sanitization would strip these escaped tags, breaking the JSON structure.
@@ -149,15 +202,15 @@ function sudoku120publisher_render_shortcode( $atts ) {
 	// before passing the content to wp_kses(). After sanitization, we re-escape the tags to restore
 	// the original JSON-compatible format.
 	$sudoku_content = str_replace(
-	    ['<\/h3>', '<\/p>'],
-	    ['</h3>', '</p>'],
-	    $sudoku_content
+		array( '<\/h3>', '<\/p>' ),
+		array( '</h3>', '</p>' ),
+		$sudoku_content
 	);
 
 	return str_replace(
-		['</h3>', '</p>'],
-			['<\/h3>', '<\/p>'],
-			 wp_kses( '<div ' . $div_attributes . '>' . $sudoku_content . '</div>', $allowed_html )
-		 );
+		array( '</h3>', '</p>' ),
+		array( '<\/h3>', '<\/p>' ),
+		wp_kses( '<div ' . $div_attributes . '>' . $sudoku_content . '</div>', $allowed_html )
+	);
 }
 add_shortcode( 'sudoku120', 'sudoku120publisher_render_shortcode' );
